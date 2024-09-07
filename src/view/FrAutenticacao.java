@@ -5,6 +5,12 @@
  */
 package view;
 
+import controller.UsuarioController;
+import java.awt.event.KeyEvent;
+import java.net.URL;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author s.lucas
@@ -36,6 +42,11 @@ public class FrAutenticacao extends javax.swing.JFrame {
         btnEntrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(0, 185, 110));
 
@@ -53,12 +64,23 @@ public class FrAutenticacao extends javax.swing.JFrame {
         lblLogin.setForeground(new java.awt.Color(255, 255, 255));
         lblLogin.setText("Login:");
 
+        txtSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSenhaKeyPressed(evt);
+            }
+        });
+
         lblSenha.setFont(new java.awt.Font("Eras Demi ITC", 1, 12)); // NOI18N
         lblSenha.setForeground(new java.awt.Color(255, 255, 255));
         lblSenha.setText("Senha:");
 
         btnEntrar.setFont(new java.awt.Font("Eras Demi ITC", 1, 12)); // NOI18N
         btnEntrar.setText("Entrar");
+        btnEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEntrarMouseClicked(evt);
+            }
+        });
         btnEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEntrarActionPerformed(evt);
@@ -120,6 +142,53 @@ public class FrAutenticacao extends javax.swing.JFrame {
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEntrarActionPerformed
+
+    private void btnEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntrarMouseClicked
+        logar();
+    }//GEN-LAST:event_btnEntrarMouseClicked
+
+    private void txtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSenhaKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            logar();
+        }
+    }//GEN-LAST:event_txtSenhaKeyPressed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        URL caminhoImagem = getClass().getResource("/images/401278_gnu_icon.png");
+
+        ImageIcon icon = new ImageIcon(caminhoImagem);
+
+        //DEFINE A IMAGEM
+        this.setIconImage(icon.getImage());
+    }//GEN-LAST:event_formWindowOpened
+
+    private void logar() {
+        String email = txtLogin.getText();
+        String senha = new String(txtSenha.getPassword());
+
+        if (email.equals("")) {
+            JOptionPane.showMessageDialog(null, "O campo 'Email' não foi preenchido!");
+
+            return;
+        }
+
+        if (senha.equals("")) {
+            JOptionPane.showMessageDialog(null, "O campo 'Senha' não foi preenchido!");
+
+            return;
+        }
+
+        UsuarioController controller = new UsuarioController();
+
+        boolean autenticado = controller.autenticar(email, senha);
+
+        if (autenticado) {
+            this.dispose();
+            new FrMenu().setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Usuáro ou senha incorreto");
+        }
+    }
 
     /**
      * @param args the command line arguments
