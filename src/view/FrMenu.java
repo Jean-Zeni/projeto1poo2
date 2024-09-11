@@ -19,7 +19,7 @@ public class FrMenu extends javax.swing.JFrame {
      */
     public FrMenu() {
         initComponents();
-
+        
     }
 
     /**
@@ -73,6 +73,11 @@ public class FrMenu extends javax.swing.JFrame {
         menuCadastro.setText("Cadastro");
 
         imUsuario.setText("Usuário");
+        imUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imUsuarioActionPerformed(evt);
+            }
+        });
         menuCadastro.add(imUsuario);
 
         imNaoSei.setText("???");
@@ -119,15 +124,20 @@ public class FrMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_imSairActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-
+        
         URL caminhoImagem = getClass().getResource("/images/401278_gnu_icon.png");
-
+        
         ImageIcon icon = new ImageIcon(caminhoImagem);
 
         //DEFINE A IMAGEM
         this.setIconImage(icon.getImage());
 
     }//GEN-LAST:event_formWindowOpened
+
+    private void imUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imUsuarioActionPerformed
+        FrCadUsuario telaCadastro = new FrCadUsuario(this, rootPaneCheckingEnabled);
+        telaCadastro.setVisible(true);
+    }//GEN-LAST:event_imUsuarioActionPerformed
 
     /**
      * @param args the command line arguments

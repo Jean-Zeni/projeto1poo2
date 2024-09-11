@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import model.Usuario;
 
 /**
  *
@@ -41,6 +42,34 @@ public class UsuarioController {
         } finally {
             gerenciador.fecharConexao(comando, resultado);
         }
+        return false;
+    }
+
+    public boolean inserirUsuario(Usuario usu) {
+        String sql = "INSERT into TBUSUARIO (nome, email, senha, datanasc, ativo) "
+                + "VALUES (?,?,?,?,?)";
+
+        GerenciadorConexao gerenciador = new GerenciadorConexao();
+        PreparedStatement comando = null;
+
+        try {
+            comando = gerenciador.prepararComando(sql);
+            comando.setString(1, usu.getNome());
+            comando.setString(2, usu.getEmail());
+            comando.setString(3, usu.getSenha());
+            comando.setDate(4, new java.sql.Date(usu.getDataNasc().getTime()));
+            comando.setBoolean(5, usu.isAtivo());
+
+            comando.executeUpdate();
+
+            return true;
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage());
+        } finally {
+            gerenciador.fecharConexao(comando);
+        }
+
         return false;
     }
 
