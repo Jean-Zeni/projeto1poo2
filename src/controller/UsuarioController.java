@@ -8,6 +8,8 @@ package controller;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import model.Usuario;
 
@@ -71,6 +73,41 @@ public class UsuarioController {
         }
 
         return false;
+    }
+
+    public List<Usuario> buscarUsuarios() {
+        String sql = "SELECT * FROM dbprojeto.tbusuario;";
+
+        GerenciadorConexao gerenciador = new GerenciadorConexao();
+        PreparedStatement comando = null;
+        ResultSet resultado = null;
+        
+        List<Usuario> listaUsuarios = new ArrayList<>();
+
+        try {
+            comando = gerenciador.prepararComando(sql);
+
+            resultado = comando.executeQuery();
+
+            if (resultado.next()) {
+                
+                Usuario usu = new Usuario();
+                
+                usu.setPkUsuario(resultado.getInt("pkusuario"));
+                usu.setNome(resultado.getString("nome"));
+                usu.setEmail(resultado.getString("email"));
+                usu.setSenha(resultado.getString("senha"));
+                usu.setDataNasc(resultado.getDate("dataNasc"));
+                usu.setAtivo(resultado.getBoolean("ativo"));
+
+                listaUsuarios.add(usu);
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        } finally {
+            gerenciador.fecharConexao(comando, resultado);
+        }
+        return listaUsuarios;
     }
 
 }

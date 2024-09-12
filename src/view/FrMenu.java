@@ -5,6 +5,7 @@
  */
 package view;
 
+import controller.UsuarioController;
 import java.net.URL;
 import javax.swing.ImageIcon;
 
@@ -19,7 +20,7 @@ public class FrMenu extends javax.swing.JFrame {
      */
     public FrMenu() {
         initComponents();
-        
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -33,6 +34,7 @@ public class FrMenu extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         lbImagem = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         barraMenu = new javax.swing.JMenuBar();
         menuCadastro = new javax.swing.JMenu();
         imUsuario = new javax.swing.JMenuItem();
@@ -53,26 +55,45 @@ public class FrMenu extends javax.swing.JFrame {
 
         lbImagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/4691330_gnu_icon.png"))); // NOI18N
 
+        jButton1.setText("jButton1");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(115, 115, 115)
+                .addGap(35, 35, 35)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbImagem)
-                .addContainerGap(119, Short.MAX_VALUE))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(lbImagem)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(lbImagem))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(83, 83, 83)
+                        .addComponent(jButton1)))
                 .addContainerGap(68, Short.MAX_VALUE))
         );
 
         menuCadastro.setText("Cadastro");
 
         imUsuario.setText("Usuário");
+        imUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imUsuarioMouseClicked(evt);
+            }
+        });
         imUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 imUsuarioActionPerformed(evt);
@@ -139,6 +160,16 @@ public class FrMenu extends javax.swing.JFrame {
         telaCadastro.setVisible(true);
     }//GEN-LAST:event_imUsuarioActionPerformed
 
+    private void imUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imUsuarioMouseClicked
+       
+    }//GEN-LAST:event_imUsuarioMouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        UsuarioController controller = new UsuarioController();
+       
+       controller.buscarUsuarios();
+    }//GEN-LAST:event_jButton1MouseClicked
+    
     /**
      * @param args the command line arguments
      */
@@ -180,6 +211,7 @@ public class FrMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem imNaoSei;
     private javax.swing.JMenuItem imSair;
     private javax.swing.JMenuItem imUsuario;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbImagem;
     private javax.swing.JMenu menuCadastro;
