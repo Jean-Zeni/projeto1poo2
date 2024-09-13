@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.Usuario;
 
@@ -89,7 +91,7 @@ public class UsuarioController {
 
             resultado = comando.executeQuery();
 
-            if (resultado.next()) {
+            while (resultado.next()) {
                 
                 Usuario usu = new Usuario();
                 
@@ -102,8 +104,8 @@ public class UsuarioController {
 
                 listaUsuarios.add(usu);
             }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             gerenciador.fecharConexao(comando, resultado);
         }
