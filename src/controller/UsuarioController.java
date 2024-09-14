@@ -77,24 +77,44 @@ public class UsuarioController {
         return false;
     }
 
-    public List<Usuario> buscarUsuarios() {
-        String sql = "SELECT * FROM dbprojeto.tbusuario;";
+    public List<Usuario> buscarUsuarios(int tipoFiltro, String filtro) {
+        String sql = "SELECT * FROM dbprojeto.tbusuario";
+
+        if (!filtro.equals("")) {
+            if (tipoFiltro == 0 || tipoFiltro == 1) {
+                sql = sql + " WHERE NOME LIKE ?";
+            } else {
+                sql = sql + " WHERE EMAIL LIKE ?";
+            }
+        }
 
         GerenciadorConexao gerenciador = new GerenciadorConexao();
         PreparedStatement comando = null;
         ResultSet resultado = null;
-        
+
         List<Usuario> listaUsuarios = new ArrayList<>();
 
         try {
             comando = gerenciador.prepararComando(sql);
 
+            if (!filtro.equals("")) {
+                if (tipoFiltro == 0) {
+                    comando.setString(1, filtro + "%");
+                } else if (tipoFiltro == 1) {
+                    comando.setString(1, "%" + filtro + "%");
+                } else if (tipoFiltro == 2){
+                    comando.setString(1, filtro + "%");
+                } else {
+                    comando.setString(1, "%" + filtro + "%");
+                }
+            }
+
             resultado = comando.executeQuery();
 
             while (resultado.next()) {
-                
+
                 Usuario usu = new Usuario();
-                
+
                 usu.setPkUsuario(resultado.getInt("pkusuario"));
                 usu.setNome(resultado.getString("nome"));
                 usu.setEmail(resultado.getString("email"));

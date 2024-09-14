@@ -34,7 +34,6 @@ public class FrMenu extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         lbImagem = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         barraMenu = new javax.swing.JMenuBar();
         menuCadastro = new javax.swing.JMenu();
         imUsuario = new javax.swing.JMenuItem();
@@ -58,33 +57,20 @@ public class FrMenu extends javax.swing.JFrame {
         lbImagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/4691330_gnu_icon.png"))); // NOI18N
         lbImagem.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jButton1.setText("jButton1");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jButton1)
-                .addGap(47, 47, 47)
+                .addGap(157, 157, 157)
                 .addComponent(lbImagem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(161, 161, 161))
+                .addGap(167, 167, 167))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addComponent(jButton1)
-                .addContainerGap(255, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lbImagem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbImagem, javax.swing.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE)
                 .addGap(29, 29, 29))
         );
 
@@ -172,14 +158,9 @@ public class FrMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_imUsuarioMouseClicked
 
     private void imConUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imConUsuarioActionPerformed
-        
+        FrConUsuario telaConsulta = new FrConUsuario(this, rootPaneCheckingEnabled);
+        telaConsulta.setVisible(true);
     }//GEN-LAST:event_imConUsuarioActionPerformed
-
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        UsuarioController controller = new UsuarioController();
-
-        controller.buscarUsuarios();
-    }//GEN-LAST:event_jButton1MouseClicked
     
     /**
      * @param args the command line arguments
@@ -222,7 +203,6 @@ public class FrMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem imNaoSei;
     private javax.swing.JMenuItem imSair;
     private javax.swing.JMenuItem imUsuario;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbImagem;
     private javax.swing.JMenu menuCadastro;

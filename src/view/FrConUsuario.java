@@ -39,20 +39,26 @@ public class FrConUsuario extends javax.swing.JDialog {
         btnPesquisar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbUsuario = new javax.swing.JTable();
+        cbFiltro = new javax.swing.JComboBox<>();
+        txtFiltro = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 185, 110));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTitulo.setFont(new java.awt.Font("Eras Bold ITC", 1, 18)); // NOI18N
         lblTitulo.setText("Consultar Usuários");
+        jPanel1.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 12, -1, -1));
 
+        btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lupa32.png"))); // NOI18N
         btnPesquisar.setText("Pesquisar");
         btnPesquisar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnPesquisarMouseClicked(evt);
             }
         });
+        jPanel1.add(btnPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 226, -1, 29));
 
         tbUsuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -82,35 +88,16 @@ public class FrConUsuario extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(tbUsuario);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(102, 102, 102)
-                        .addComponent(lblTitulo))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(13, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnPesquisar)
-                .addGap(153, 153, 153))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblTitulo)
-                .addGap(65, 65, 65)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                .addComponent(btnPesquisar)
-                .addGap(40, 40, 40))
-        );
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 121, 375, 87));
+
+        cbFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome iniciando", "Nome contendo", "Email  iniciando", "Email contendo" }));
+        cbFiltro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbFiltroActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cbFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, 20));
+        jPanel1.add(txtFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 201, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -130,6 +117,10 @@ public class FrConUsuario extends javax.swing.JDialog {
         pesquisar();
     }//GEN-LAST:event_btnPesquisarMouseClicked
 
+    private void cbFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbFiltroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbFiltroActionPerformed
+
     private void pesquisar(){
         
         DefaultTableModel modelo = (DefaultTableModel) tbUsuario.getModel();
@@ -138,7 +129,10 @@ public class FrConUsuario extends javax.swing.JDialog {
         
         UsuarioController controller = new UsuarioController();
         
-        List<Usuario> listaUsuarios = controller.buscarUsuarios();
+        int tipoFiltro = cbFiltro.getSelectedIndex();
+        String filtro = txtFiltro.getText();
+        
+        List<Usuario> listaUsuarios = controller.buscarUsuarios(tipoFiltro, filtro);
         
         for (Usuario usu : listaUsuarios){
             Object[] linha = {
@@ -197,9 +191,11 @@ public class FrConUsuario extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPesquisar;
+    private javax.swing.JComboBox<String> cbFiltro;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JTable tbUsuario;
+    private javax.swing.JTextField txtFiltro;
     // End of variables declaration//GEN-END:variables
 }
