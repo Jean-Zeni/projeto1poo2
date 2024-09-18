@@ -270,7 +270,8 @@ public class FrCadUsuario extends javax.swing.JDialog {
         usu.setEmail(txtEmail.getText());
 
         String senha = new String(txtSenha.getPassword());
-        usu.setSenha(senha);
+        String senhaHash = Utils.calcularHash(senha);
+        usu.setSenha(senhaHash);
 
         Date data = Utils.converterStringToDate(txtDataNasc.getText());
         usu.setDataNasc(data);

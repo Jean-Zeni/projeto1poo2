@@ -10,6 +10,7 @@ import java.awt.event.KeyEvent;
 import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import utils.Utils;
 
 /**
  *
@@ -65,6 +66,11 @@ public class FrAutenticacao extends javax.swing.JFrame {
         lblLogin.setForeground(new java.awt.Color(255, 255, 255));
         lblLogin.setText("Login:");
 
+        txtSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSenhaActionPerformed(evt);
+            }
+        });
         txtSenha.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtSenhaKeyPressed(evt);
@@ -163,6 +169,10 @@ public class FrAutenticacao extends javax.swing.JFrame {
         this.setIconImage(icon.getImage());
     }//GEN-LAST:event_formWindowOpened
 
+    private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSenhaActionPerformed
+
     private void logar() {
         String email = txtLogin.getText();
         String senha = new String(txtSenha.getPassword());
@@ -179,9 +189,11 @@ public class FrAutenticacao extends javax.swing.JFrame {
             return;
         }
 
+        String senhaHash = Utils.calcularHash(senha);
+
         UsuarioController controller = new UsuarioController();
 
-        boolean autenticado = controller.autenticar(email, senha);
+        boolean autenticado = controller.autenticar(email, senhaHash);
 
         if (autenticado) {
             this.dispose();
