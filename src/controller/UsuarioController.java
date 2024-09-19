@@ -102,7 +102,7 @@ public class UsuarioController {
                     comando.setString(1, filtro + "%");
                 } else if (tipoFiltro == 1) {
                     comando.setString(1, "%" + filtro + "%");
-                } else if (tipoFiltro == 2){
+                } else if (tipoFiltro == 2) {
                     comando.setString(1, filtro + "%");
                 } else {
                     comando.setString(1, "%" + filtro + "%");
@@ -130,6 +130,30 @@ public class UsuarioController {
             gerenciador.fecharConexao(comando, resultado);
         }
         return listaUsuarios;
+    }
+
+    public boolean excluir(int pkUsuario) {
+
+        String sql = "DELETE FROM tbusuario WHERE pkusuario = ?";
+
+        GerenciadorConexao gerenciador = new GerenciadorConexao();
+        PreparedStatement comando = null;
+
+        try {
+            comando = gerenciador.prepararComando(sql);
+            comando.setInt(1, pkUsuario);
+
+            comando.executeUpdate();
+
+            return true;
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao excluir: " + ex);
+        } finally {
+            gerenciador.fecharConexao(comando);
+        }
+        
+        return false;
     }
 
 }

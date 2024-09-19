@@ -7,6 +7,7 @@ package view;
 
 import controller.UsuarioController;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Usuario;
 import utils.Utils;
@@ -38,9 +39,11 @@ public class FrConUsuario extends javax.swing.JDialog {
         lblTitulo = new javax.swing.JLabel();
         btnPesquisar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbUsuario = new javax.swing.JTable();
+        grdUsuario = new javax.swing.JTable();
         cbFiltro = new javax.swing.JComboBox<>();
         txtFiltro = new javax.swing.JTextField();
+        btnAlterar = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -49,7 +52,7 @@ public class FrConUsuario extends javax.swing.JDialog {
 
         lblTitulo.setFont(new java.awt.Font("Eras Bold ITC", 1, 18)); // NOI18N
         lblTitulo.setText("Consultar Usuários");
-        jPanel1.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 12, -1, -1));
+        jPanel1.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, -1, -1));
 
         btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lupa32.png"))); // NOI18N
         btnPesquisar.setText("Pesquisar");
@@ -58,9 +61,9 @@ public class FrConUsuario extends javax.swing.JDialog {
                 btnPesquisarMouseClicked(evt);
             }
         });
-        jPanel1.add(btnPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 226, -1, 29));
+        jPanel1.add(btnPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, -1, 29));
 
-        tbUsuario.setModel(new javax.swing.table.DefaultTableModel(
+        grdUsuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -86,9 +89,9 @@ public class FrConUsuario extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tbUsuario);
+        jScrollPane1.setViewportView(grdUsuario);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 121, 375, 87));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 570, 87));
 
         cbFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome iniciando", "Nome contendo", "Email  iniciando", "Email contendo" }));
         cbFiltro.addActionListener(new java.awt.event.ActionListener() {
@@ -97,17 +100,40 @@ public class FrConUsuario extends javax.swing.JDialog {
             }
         });
         jPanel1.add(cbFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, 20));
-        jPanel1.add(txtFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 201, -1));
+        jPanel1.add(txtFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 360, -1));
+
+        btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/caneta24px.png"))); // NOI18N
+        btnAlterar.setText("Alterar");
+        btnAlterar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAlterarMouseClicked(evt);
+            }
+        });
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAlterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 280, -1, 30));
+
+        btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lixo24px.png"))); // NOI18N
+        btnExcluir.setText("Excluir");
+        btnExcluir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnExcluirMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, -1, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
         );
 
         pack();
@@ -121,9 +147,52 @@ public class FrConUsuario extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbFiltroActionPerformed
 
-    private void pesquisar(){
+    private void btnExcluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirMouseClicked
         
-        DefaultTableModel modelo = (DefaultTableModel) tbUsuario.getModel();
+        if (grdUsuario.getSelectedRow() != -1) {
+            int posicaoSelecionada = grdUsuario.getSelectedRow();
+            String textoCelula = grdUsuario.getValueAt(posicaoSelecionada, 0).toString();
+            
+            int pkUsuario = Integer.parseInt(textoCelula);
+            
+            UsuarioController controller = new UsuarioController();
+            
+            if (controller.excluir(pkUsuario) == true) {
+                JOptionPane.showMessageDialog(null, "Usuário excluído com sucesso!");
+                pesquisar();
+            }
+        }
+    }//GEN-LAST:event_btnExcluirMouseClicked
+
+    private void btnAlterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlterarMouseClicked
+        
+        if (grdUsuario.getSelectedRow() != -1) {
+            int posicaoSelecionada = grdUsuario.getSelectedRow();
+            String textoCelula = grdUsuario.getValueAt(posicaoSelecionada, 0).toString();
+            
+            int pkUsuario = Integer.parseInt(textoCelula);
+            
+            Usuario usu = new Usuario();
+            usu.setPkUsuario(pkUsuario);
+            
+            FrAltUsu telaAlt = new FrAltUsu(null, rootPaneCheckingEnabled);
+            
+            telaAlt.setUsuario(usu);
+            
+            telaAlt.setVisible(true);
+            
+        }
+        
+
+    }//GEN-LAST:event_btnAlterarMouseClicked
+
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAlterarActionPerformed
+    
+    private void pesquisar() {
+        
+        DefaultTableModel modelo = (DefaultTableModel) grdUsuario.getModel();
         
         modelo.setNumRows(0);
         
@@ -134,7 +203,7 @@ public class FrConUsuario extends javax.swing.JDialog {
         
         List<Usuario> listaUsuarios = controller.buscarUsuarios(tipoFiltro, filtro);
         
-        for (Usuario usu : listaUsuarios){
+        for (Usuario usu : listaUsuarios) {
             Object[] linha = {
                 usu.getPkUsuario(),
                 usu.getNome(),
@@ -146,7 +215,7 @@ public class FrConUsuario extends javax.swing.JDialog {
             modelo.addRow(linha);
         }
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -190,12 +259,14 @@ public class FrConUsuario extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAlterar;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JComboBox<String> cbFiltro;
+    private javax.swing.JTable grdUsuario;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitulo;
-    private javax.swing.JTable tbUsuario;
     private javax.swing.JTextField txtFiltro;
     // End of variables declaration//GEN-END:variables
 }
