@@ -76,22 +76,22 @@ public class FrCadUsuario extends javax.swing.JDialog {
                 txtNomeActionPerformed(evt);
             }
         });
-        jPanel1.add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 100, 336, -1));
+        jPanel1.add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 100, 370, -1));
 
         lblEmail.setForeground(new java.awt.Color(0, 0, 0));
         lblEmail.setText("Email:");
         jPanel1.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 126, -1, -1));
-        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 148, 336, -1));
+        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 148, 370, -1));
 
         lblSenha.setForeground(new java.awt.Color(0, 0, 0));
         lblSenha.setText("Senha:");
         jPanel1.add(lblSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 174, -1, -1));
-        jPanel1.add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 192, 336, -1));
+        jPanel1.add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 192, 370, -1));
 
         lblConfSenha.setForeground(new java.awt.Color(0, 0, 0));
         lblConfSenha.setText("Confirmar senha:");
         jPanel1.add(lblConfSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 218, -1, -1));
-        jPanel1.add(txtConfSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 240, 336, -1));
+        jPanel1.add(txtConfSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 240, 370, -1));
 
         lblDataNasc.setForeground(new java.awt.Color(0, 0, 0));
         lblDataNasc.setText("Data de nascimento:");
@@ -122,13 +122,18 @@ public class FrCadUsuario extends javax.swing.JDialog {
                 btnSalvarMouseClicked(evt);
             }
         });
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 339, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,6 +152,10 @@ public class FrCadUsuario extends javax.swing.JDialog {
             gravar();
         }
     }//GEN-LAST:event_btnSalvarMouseClicked
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSalvarActionPerformed
 
     public boolean verificarCampos() {
         if (txtNome.equals("")) {

@@ -77,6 +77,35 @@ public class UsuarioController {
         return false;
     }
 
+    public boolean alterarUsuario(Usuario usuario) {
+        String sql = "UPDATE `dbprojeto`.`tbusuario` SET `nome` = ?, SET `email` = ?, SET `senha` = ? "
+                + " SET `datanasc` = ?, SET `ativo` = ? WHERE "
+                + " (`pkusuario` = ?)";
+
+        GerenciadorConexao gerenciador = new GerenciadorConexao();
+        PreparedStatement comando = null;
+
+        try {
+            comando = gerenciador.prepararComando(sql);
+            comando.setString(1, usuario.getNome());
+            comando.setString(2, usuario.getEmail());
+            comando.setString(3, usuario.getSenha());
+            comando.setDate(4, new java.sql.Date(usuario.getDataNasc().getTime()));
+            comando.setBoolean(5, usuario.isAtivo());
+
+            comando.executeUpdate();
+
+            return true;
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage());
+        } finally {
+            gerenciador.fecharConexao(comando);
+        }
+
+        return false;
+    }
+
     public List<Usuario> buscarUsuarios(int tipoFiltro, String filtro) {
         String sql = "SELECT * FROM dbprojeto.tbusuario";
 
@@ -152,8 +181,45 @@ public class UsuarioController {
         } finally {
             gerenciador.fecharConexao(comando);
         }
-        
+
         return false;
+    }
+
+    public Usuario buscarPorPk(int pkUsuario) {
+
+        //Guarda o sql
+        String sql = "SELECT * FROM tbusuario WHERE pkusuario = ? ";
+
+        //cria um gerenciador de conexao
+        GerenciadorConexao gerenciador = new GerenciadorConexao();
+        PreparedStatement comando = null;
+        ResultSet resultado = null;
+
+        Usuario usu = new Usuario();
+
+        try {
+            comando = gerenciador.prepararComando(sql);
+
+            comando.setInt(1, pkUsuario);
+
+            resultado = comando.executeQuery();
+
+            if (resultado.next()) {
+
+                usu.setPkUsuario(resultado.getInt("pkusuario"));
+                usu.setNome(resultado.getString("nome"));
+                usu.setEmail(resultado.getString("email"));
+                usu.setSenha(resultado.getString("senha"));
+                usu.setDataNasc(resultado.getDate("dataNasc"));
+                usu.setAtivo(resultado.getBoolean("ativo"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            gerenciador.fecharConexao(comando, resultado);
+        }
+        return usu;
+
     }
 
 }

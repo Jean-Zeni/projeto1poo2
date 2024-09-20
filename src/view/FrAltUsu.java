@@ -5,8 +5,14 @@
  */
 package view;
 
+import controller.UsuarioController;
 import java.awt.Color;
+import java.net.URL;
+import java.util.Date;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import model.Usuario;
+import utils.Utils;
 
 /**
  *
@@ -22,6 +28,7 @@ public class FrAltUsu extends javax.swing.JDialog {
     public FrAltUsu(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     public void setUsuario(Usuario usuario) {
@@ -55,6 +62,7 @@ public class FrAltUsu extends javax.swing.JDialog {
         btnAlterarSenha = new javax.swing.JButton();
         lbCodeTitle = new javax.swing.JLabel();
         txtCode = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -127,13 +135,18 @@ public class FrAltUsu extends javax.swing.JDialog {
                 btnSalvarMouseClicked(evt);
             }
         });
-        PnAltUsu.add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 410, -1, 30));
+        PnAltUsu.add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 410, -1, 30));
 
         lblTitulo.setFont(new java.awt.Font("Eras Bold ITC", 1, 18)); // NOI18N
         lblTitulo.setText("Alterar Usuários");
-        PnAltUsu.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, -1, -1));
+        PnAltUsu.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, -1, -1));
 
+        btnAlterarSenha.setBackground(new java.awt.Color(0, 185, 110));
+        btnAlterarSenha.setForeground(new java.awt.Color(0, 0, 0));
         btnAlterarSenha.setText("Alterar senha");
+        btnAlterarSenha.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnAlterarSenha.setBorderPainted(false);
+        btnAlterarSenha.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAlterarSenha.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAlterarSenhaMouseClicked(evt);
@@ -144,10 +157,11 @@ public class FrAltUsu extends javax.swing.JDialog {
                 btnAlterarSenhaActionPerformed(evt);
             }
         });
-        PnAltUsu.add(btnAlterarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 370, -1, -1));
+        PnAltUsu.add(btnAlterarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 370, -1, -1));
 
+        lbCodeTitle.setForeground(new java.awt.Color(0, 0, 0));
         lbCodeTitle.setText("Código:");
-        PnAltUsu.add(lbCodeTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, 20));
+        PnAltUsu.add(lbCodeTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, 20));
 
         txtCode.setEditable(false);
         txtCode.setBackground(new java.awt.Color(204, 204, 204));
@@ -156,13 +170,16 @@ public class FrAltUsu extends javax.swing.JDialog {
                 txtCodeActionPerformed(evt);
             }
         });
-        PnAltUsu.add(txtCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 30, -1));
+        PnAltUsu.add(txtCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 30, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/caneta64px.png"))); // NOI18N
+        PnAltUsu.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PnAltUsu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(PnAltUsu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,9 +196,9 @@ public class FrAltUsu extends javax.swing.JDialog {
     }//GEN-LAST:event_txtNomeActionPerformed
 
     private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
-        //if (verificarCampos() == true) {
-          //  gravar();
-        //}
+        if (verificarCampos() == true) {
+            gravar();
+        }
     }//GEN-LAST:event_btnSalvarMouseClicked
 
     private void txtCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodeActionPerformed
@@ -219,16 +236,106 @@ public class FrAltUsu extends javax.swing.JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         carregarUsuario();
+
+        URL caminhoImagem = getClass().getResource("/images/401278_gnu_icon.png");
+
+        ImageIcon icon = new ImageIcon(caminhoImagem);
+
+        //DEFINE A IMAGEM
+        this.setIconImage(icon.getImage());
     }//GEN-LAST:event_formWindowOpened
 
-    public void carregarUsuario(){
-        //Vamos buscar no banco de dados o restante dos dados do usuario
-        
+    public void carregarUsuario() {
+        //Vamos buscar no banco de dados o restante dos campos do usuario,
+        //atualmente só tem o pk
+
         UsuarioController controller = new UsuarioController();
         usuario = controller.buscarPorPk(usuario.getPkUsuario());
-        
+
+        String codigo = String.valueOf(usuario.getPkUsuario());
+        txtCode.setText(codigo);
+        txtNome.setText(usuario.getNome());
+        txtEmail.setText(usuario.getEmail());
+        txtDataNasc.setText(Utils.converterDateToString(usuario.getDataNasc()));
+        cbAtivo.setSelected(usuario.isAtivo());
+
     }
-    
+
+    public boolean verificarCampos() {
+        if (txtNome.equals("")) {
+            JOptionPane.showMessageDialog(null, "O campo 'Nome' está vazio!");
+            return false;
+        }
+
+        if (!txtNome.getText().matches("^[\\p{L} ]+$")) {
+            JOptionPane.showMessageDialog(null, "O campo 'Nome' possui caracteres inválidos!");
+            return false;
+        }
+
+        if (txtEmail.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "O campo'Email' está vazio!");
+            return false;
+        }
+
+        if (!txtEmail.getText().matches(
+                "^[a-z0-9._-]+@[a-z._]+.[a-z._]+$")) {
+            JOptionPane.showMessageDialog(null, "O campo 'Email' possui caracteres inválidos!");
+        }
+
+        if (!txtDataNasc.getText().matches(
+                "^[0-9]{2}/[0-9]{2}/[0-9]{4}$")) {
+            JOptionPane.showMessageDialog(null, "O campo 'Data de nascimento' possui formatação incorreta"
+                    + " Ex.: 01/01/1990");
+            return false;
+        }
+
+        if (txtSenha.isEditable()) {
+            String senha = new String(txtSenha.getPassword());
+            String confSenha = new String(txtConfSenha.getPassword());
+
+            if (senha.length() < 8) {
+                JOptionPane.showMessageDialog(null, "O campo 'Senha' está vazio ou contém menos de 8 caracteres!");
+                return false;
+            }
+
+            if (!senha.equals(confSenha)) {
+                JOptionPane.showMessageDialog(null, "A confirmação e a senha necessitam ser iguais!");
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public void gravar() {
+        //vai atualizar os dados do atributo usuario
+        //Usuario usu = new Usuario();
+
+        usuario.setNome(txtNome.getText());
+        usuario.setEmail(txtEmail.getText());
+        
+        if(txtSenha.isEditable()){
+
+        String senha = new String(txtSenha.getPassword());
+        String senhaHash = Utils.calcularHash(senha);
+        usuario.setSenha(senhaHash);
+        }
+        
+        Date data = Utils.converterStringToDate(txtDataNasc.getText());
+        usuario.setDataNasc(data);
+
+        usuario.setAtivo(cbAtivo.isSelected());
+
+        UsuarioController controller = new UsuarioController();
+
+        if (controller.alterarUsuario(usuario)) {
+            JOptionPane.showMessageDialog(null, "Usuário: " + usuario.getNome() + " alterado com sucesso!");
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Usuário não pode ser alterado!");
+        }
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -277,6 +384,7 @@ public class FrAltUsu extends javax.swing.JDialog {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JCheckBox cbAtivo;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lbCodeTitle;
     private javax.swing.JLabel lblConfSenha;
     private javax.swing.JLabel lblDataNasc;
