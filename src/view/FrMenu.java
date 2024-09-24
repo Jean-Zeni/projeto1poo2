@@ -115,6 +115,16 @@ public class FrMenu extends javax.swing.JFrame {
         barraMenu.add(menuConsulta);
 
         menuSobre.setText("Sobre");
+        menuSobre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuSobreMouseClicked(evt);
+            }
+        });
+        menuSobre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuSobreActionPerformed(evt);
+            }
+        });
         barraMenu.add(menuSobre);
 
         setJMenuBar(barraMenu);
@@ -138,9 +148,9 @@ public class FrMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_imSairActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
+
         URL caminhoImagem = getClass().getResource("/images/401278_gnu_icon.png");
-        
+
         ImageIcon icon = new ImageIcon(caminhoImagem);
 
         //DEFINE A IMAGEM
@@ -154,14 +164,23 @@ public class FrMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_imUsuarioActionPerformed
 
     private void imUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imUsuarioMouseClicked
-       
+
     }//GEN-LAST:event_imUsuarioMouseClicked
 
     private void imConUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imConUsuarioActionPerformed
         FrConUsuario telaConsulta = new FrConUsuario(this, rootPaneCheckingEnabled);
         telaConsulta.setVisible(true);
     }//GEN-LAST:event_imConUsuarioActionPerformed
-    
+
+    private void menuSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSobreActionPerformed
+
+    }//GEN-LAST:event_menuSobreActionPerformed
+
+    private void menuSobreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuSobreMouseClicked
+        FrSobre telaSobre = new FrSobre(this, rootPaneCheckingEnabled);
+        telaSobre.setVisible(true);
+    }//GEN-LAST:event_menuSobreMouseClicked
+
     /**
      * @param args the command line arguments
      */

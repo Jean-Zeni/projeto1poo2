@@ -135,6 +135,11 @@ public class FrAltUsu extends javax.swing.JDialog {
                 btnSalvarMouseClicked(evt);
             }
         });
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
         PnAltUsu.add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 410, -1, 30));
 
         lblTitulo.setFont(new java.awt.Font("Eras Bold ITC", 1, 18)); // NOI18N
@@ -244,6 +249,10 @@ public class FrAltUsu extends javax.swing.JDialog {
         //DEFINE A IMAGEM
         this.setIconImage(icon.getImage());
     }//GEN-LAST:event_formWindowOpened
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSalvarActionPerformed
 
     public void carregarUsuario() {
         //Vamos buscar no banco de dados o restante dos campos do usuario,

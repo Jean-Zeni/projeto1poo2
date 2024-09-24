@@ -148,15 +148,15 @@ public class FrConUsuario extends javax.swing.JDialog {
     }//GEN-LAST:event_cbFiltroActionPerformed
 
     private void btnExcluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirMouseClicked
-        
+
         if (grdUsuario.getSelectedRow() != -1) {
             int posicaoSelecionada = grdUsuario.getSelectedRow();
             String textoCelula = grdUsuario.getValueAt(posicaoSelecionada, 0).toString();
-            
+
             int pkUsuario = Integer.parseInt(textoCelula);
-            
+
             UsuarioController controller = new UsuarioController();
-            
+
             if (controller.excluir(pkUsuario) == true) {
                 JOptionPane.showMessageDialog(null, "Usuário excluído com sucesso!");
                 pesquisar();
@@ -165,44 +165,45 @@ public class FrConUsuario extends javax.swing.JDialog {
     }//GEN-LAST:event_btnExcluirMouseClicked
 
     private void btnAlterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlterarMouseClicked
-        
+
         if (grdUsuario.getSelectedRow() != -1) {
             int posicaoSelecionada = grdUsuario.getSelectedRow();
             String textoCelula = grdUsuario.getValueAt(posicaoSelecionada, 0).toString();
-            
+
             int pkUsuario = Integer.parseInt(textoCelula);
-            
+
             Usuario usu = new Usuario();
             usu.setPkUsuario(pkUsuario);
-            
+
             FrAltUsu telaAlt = new FrAltUsu(null, rootPaneCheckingEnabled);
-            
+
             telaAlt.setUsuario(usu);
-            
+
             telaAlt.setVisible(true);
-            
+            pesquisar();
+
         }
-        
+
 
     }//GEN-LAST:event_btnAlterarMouseClicked
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAlterarActionPerformed
-    
+
     private void pesquisar() {
-        
+
         DefaultTableModel modelo = (DefaultTableModel) grdUsuario.getModel();
-        
+
         modelo.setNumRows(0);
-        
+
         UsuarioController controller = new UsuarioController();
-        
+
         int tipoFiltro = cbFiltro.getSelectedIndex();
         String filtro = txtFiltro.getText();
-        
+
         List<Usuario> listaUsuarios = controller.buscarUsuarios(tipoFiltro, filtro);
-        
+
         for (Usuario usu : listaUsuarios) {
             Object[] linha = {
                 usu.getPkUsuario(),
@@ -211,7 +212,7 @@ public class FrConUsuario extends javax.swing.JDialog {
                 Utils.converterDateToString(usu.getDataNasc()),
                 usu.ativoToString()
             };
-            
+
             modelo.addRow(linha);
         }
     }

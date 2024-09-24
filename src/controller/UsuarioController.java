@@ -78,9 +78,9 @@ public class UsuarioController {
     }
 
     public boolean alterarUsuario(Usuario usuario) {
-        String sql = "UPDATE `dbprojeto`.`tbusuario` SET `nome` = ?, SET `email` = ?, SET `senha` = ? "
-                + " SET `datanasc` = ?, SET `ativo` = ? WHERE "
-                + " (`pkusuario` = ?)";
+        String sql = "UPDATE tbusuario SET nome = ?, email = ?, senha = ?, "
+                + " datanasc = ?, ativo = ? WHERE "
+                + " pkusuario = ?";
 
         GerenciadorConexao gerenciador = new GerenciadorConexao();
         PreparedStatement comando = null;
@@ -92,13 +92,14 @@ public class UsuarioController {
             comando.setString(3, usuario.getSenha());
             comando.setDate(4, new java.sql.Date(usuario.getDataNasc().getTime()));
             comando.setBoolean(5, usuario.isAtivo());
+            comando.setInt(6, usuario.getPkUsuario());
 
             comando.executeUpdate();
 
             return true;
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "ERRO NA ALTERAÇÃO DE USÚARIO.");
         } finally {
             gerenciador.fecharConexao(comando);
         }
