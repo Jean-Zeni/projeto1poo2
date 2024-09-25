@@ -5,6 +5,9 @@
  */
 package controller;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,8 +15,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import model.Usuario;
+import utils.Utils;
 
 /**
  *
@@ -50,19 +56,22 @@ public class UsuarioController {
     }
 
     public boolean inserirUsuario(Usuario usu) {
-        String sql = "INSERT into TBUSUARIO (nome, email, senha, datanasc, ativo) "
-                + "VALUES (?,?,?,?,?)";
+        String sql = "INSERT into TBUSUARIO (nome, email, senha, datanasc, ativo, imagem) "
+                + "VALUES (?,?,?,?,?,?)";
 
         GerenciadorConexao gerenciador = new GerenciadorConexao();
         PreparedStatement comando = null;
 
         try {
+            byte[] iconBytes = Utils.converterIconToBytes(usu.getImagem());
+
             comando = gerenciador.prepararComando(sql);
             comando.setString(1, usu.getNome());
             comando.setString(2, usu.getEmail());
             comando.setString(3, usu.getSenha());
             comando.setDate(4, new java.sql.Date(usu.getDataNasc().getTime()));
             comando.setBoolean(5, usu.isAtivo());
+            comando.setBytes(6, iconBytes);
 
             comando.executeUpdate();
 
@@ -213,8 +222,16 @@ public class UsuarioController {
                 usu.setSenha(resultado.getString("senha"));
                 usu.setDataNasc(resultado.getDate("dataNasc"));
                 usu.setAtivo(resultado.getBoolean("ativo"));
+
+                byte[] bytes = resultado.getBytes("imagem");
+                if (bytes != null) {
+                    ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
+                    BufferedImage imagem = ImageIO.read(bis);
+
+                    usu.setImagem(new ImageIcon(imagem));
+                }
             }
-        } catch (SQLException ex) {
+        } catch (SQLException | IOException ex) {
             Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             gerenciador.fecharConexao(comando, resultado);

@@ -199,7 +199,7 @@ public class FrAutenticacao extends javax.swing.JFrame {
             this.dispose();
             new FrMenu().setVisible(true);
         } else {
-            JOptionPane.showMessageDialog(null, "Usuáro ou senha incorreto");
+            JOptionPane.showMessageDialog(null, "Usuário ou senha incorreto");
         }
     }
 

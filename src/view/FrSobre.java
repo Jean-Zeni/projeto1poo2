@@ -21,6 +21,7 @@ public class FrSobre extends javax.swing.JDialog {
     public FrSobre(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

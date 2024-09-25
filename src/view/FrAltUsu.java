@@ -7,10 +7,14 @@ package view;
 
 import controller.UsuarioController;
 import java.awt.Color;
+import java.io.File;
 import java.net.URL;
 import java.util.Date;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import model.Usuario;
 import utils.Utils;
 
@@ -63,6 +67,8 @@ public class FrAltUsu extends javax.swing.JDialog {
         lbCodeTitle = new javax.swing.JLabel();
         txtCode = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        lblFoto = new javax.swing.JLabel();
+        btnEscolherFoto = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -76,55 +82,55 @@ public class FrAltUsu extends javax.swing.JDialog {
 
         lblNome.setForeground(new java.awt.Color(0, 0, 0));
         lblNome.setText("Nome:");
-        PnAltUsu.add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
+        PnAltUsu.add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
 
         txtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNomeActionPerformed(evt);
             }
         });
-        PnAltUsu.add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 336, -1));
+        PnAltUsu.add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 420, -1));
 
         lblEmail.setForeground(new java.awt.Color(0, 0, 0));
         lblEmail.setText("Email:");
-        PnAltUsu.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
-        PnAltUsu.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 336, -1));
+        PnAltUsu.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, -1, -1));
+        PnAltUsu.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 420, -1));
 
         txtSenha.setEditable(false);
         txtSenha.setBackground(new java.awt.Color(204, 204, 204));
-        PnAltUsu.add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 336, -1));
+        PnAltUsu.add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 420, -1));
 
         lblSenha.setForeground(new java.awt.Color(0, 0, 0));
         lblSenha.setText("Senha:");
-        PnAltUsu.add(lblSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, -1, 20));
+        PnAltUsu.add(lblSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, -1, 20));
 
         lblConfSenha.setForeground(new java.awt.Color(0, 0, 0));
         lblConfSenha.setText("Confirmar senha:");
-        PnAltUsu.add(lblConfSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, -1, -1));
+        PnAltUsu.add(lblConfSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, -1, -1));
 
         txtConfSenha.setEditable(false);
         txtConfSenha.setBackground(new java.awt.Color(204, 204, 204));
-        PnAltUsu.add(txtConfSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 336, -1));
+        PnAltUsu.add(txtConfSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 420, -1));
 
         lblDataNasc.setForeground(new java.awt.Color(0, 0, 0));
         lblDataNasc.setText("Data de nascimento:");
-        PnAltUsu.add(lblDataNasc, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
+        PnAltUsu.add(lblDataNasc, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
 
         txtDataNasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM))));
-        PnAltUsu.add(txtDataNasc, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 140, -1));
+        PnAltUsu.add(txtDataNasc, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 140, -1));
 
         cbAtivo.setBackground(new java.awt.Color(0, 185, 110));
         cbAtivo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         cbAtivo.setForeground(new java.awt.Color(0, 0, 0));
         cbAtivo.setText("Ativo");
         cbAtivo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        PnAltUsu.add(cbAtivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, -1, -1));
+        PnAltUsu.add(cbAtivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 300, -1, -1));
 
         btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close16.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
         btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        PnAltUsu.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 410, -1, 30));
+        PnAltUsu.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 490, -1, 30));
 
         btnSalvar.setForeground(new java.awt.Color(0, 0, 0));
         btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save24px.png"))); // NOI18N
@@ -140,11 +146,11 @@ public class FrAltUsu extends javax.swing.JDialog {
                 btnSalvarActionPerformed(evt);
             }
         });
-        PnAltUsu.add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 410, -1, 30));
+        PnAltUsu.add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 490, -1, 30));
 
         lblTitulo.setFont(new java.awt.Font("Eras Bold ITC", 1, 18)); // NOI18N
         lblTitulo.setText("Alterar Usuários");
-        PnAltUsu.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, -1, -1));
+        PnAltUsu.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, -1, -1));
 
         btnAlterarSenha.setBackground(new java.awt.Color(0, 185, 110));
         btnAlterarSenha.setForeground(new java.awt.Color(0, 0, 0));
@@ -162,11 +168,11 @@ public class FrAltUsu extends javax.swing.JDialog {
                 btnAlterarSenhaActionPerformed(evt);
             }
         });
-        PnAltUsu.add(btnAlterarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 370, -1, -1));
+        PnAltUsu.add(btnAlterarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 450, -1, -1));
 
         lbCodeTitle.setForeground(new java.awt.Color(0, 0, 0));
         lbCodeTitle.setText("Código:");
-        PnAltUsu.add(lbCodeTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, 20));
+        PnAltUsu.add(lbCodeTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, 20));
 
         txtCode.setEditable(false);
         txtCode.setBackground(new java.awt.Color(204, 204, 204));
@@ -175,22 +181,36 @@ public class FrAltUsu extends javax.swing.JDialog {
                 txtCodeActionPerformed(evt);
             }
         });
-        PnAltUsu.add(txtCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 30, -1));
+        PnAltUsu.add(txtCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 30, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/caneta64px.png"))); // NOI18N
-        PnAltUsu.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, -1, -1));
+        PnAltUsu.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, -1, -1));
+
+        lblFoto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        PnAltUsu.add(lblFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, 140, 140));
+
+        btnEscolherFoto.setText("Selecionar imagem");
+        btnEscolherFoto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEscolherFotoMouseClicked(evt);
+            }
+        });
+        btnEscolherFoto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEscolherFotoActionPerformed(evt);
+            }
+        });
+        PnAltUsu.add(btnEscolherFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PnAltUsu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
+            .addComponent(PnAltUsu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(PnAltUsu, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(PnAltUsu, javax.swing.GroupLayout.DEFAULT_SIZE, 536, Short.MAX_VALUE)
         );
 
         pack();
@@ -254,6 +274,44 @@ public class FrAltUsu extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSalvarActionPerformed
 
+    private void btnEscolherFotoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEscolherFotoMouseClicked
+        //CRIA UM ESCOLHEDOR DE ARQUVOS
+        JFileChooser exploradorArquivos = new JFileChooser();
+
+        //DEFINE O TITULO QUE APARECERA NA JANELA DO EXPLORADOR DE ARQUIVOS
+        exploradorArquivos.setDialogTitle("Escolha um arquivo");
+
+        //FILTRAR OS TIPOS DE ARQUIVOS QUE IRÁ BUSCAR
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Imagens", "jpg", "jpeg", "png");
+        exploradorArquivos.setFileFilter(filtro);
+
+        //CONFIGURAÇÕES PARA PERMITIR A SELEÇÃO DE APENAS UM ARQUIVO
+        exploradorArquivos.setMultiSelectionEnabled(false);
+
+        /*Chama o explorador de arquivos e guarda o resultado:
+        APPROVE_OPTION (selecionou)
+        CANCEL_OPTION (usuário cancelou)*/
+        int resultado = exploradorArquivos.showOpenDialog(null);
+
+        if (resultado == JFileChooser.APPROVE_OPTION) {
+            //PEGA O ARQUIVO SELECIONADO
+            File arquivo = exploradorArquivos.getSelectedFile();
+
+            //Converte para um ícone
+            Icon icone = Utils.converterFileParaIcon(arquivo);
+
+            //Redimensiona para o tamanho que irá aparecer na tela
+            ImageIcon iconeRedimensionado = Utils.redimensionarIcon(icone, 140, 140);
+
+            //Coloca o icone na label da tela
+            lblFoto.setIcon(iconeRedimensionado);
+        }
+    }//GEN-LAST:event_btnEscolherFotoMouseClicked
+
+    private void btnEscolherFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEscolherFotoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEscolherFotoActionPerformed
+
     public void carregarUsuario() {
         //Vamos buscar no banco de dados o restante dos campos do usuario,
         //atualmente só tem o pk
@@ -267,6 +325,7 @@ public class FrAltUsu extends javax.swing.JDialog {
         txtEmail.setText(usuario.getEmail());
         txtDataNasc.setText(Utils.converterDateToString(usuario.getDataNasc()));
         cbAtivo.setSelected(usuario.isAtivo());
+        lblFoto.setIcon(usuario.getImagem());
 
     }
 
@@ -322,14 +381,14 @@ public class FrAltUsu extends javax.swing.JDialog {
 
         usuario.setNome(txtNome.getText());
         usuario.setEmail(txtEmail.getText());
-        
-        if(txtSenha.isEditable()){
 
-        String senha = new String(txtSenha.getPassword());
-        String senhaHash = Utils.calcularHash(senha);
-        usuario.setSenha(senhaHash);
+        if (txtSenha.isEditable()) {
+
+            String senha = new String(txtSenha.getPassword());
+            String senhaHash = Utils.calcularHash(senha);
+            usuario.setSenha(senhaHash);
         }
-        
+
         Date data = Utils.converterStringToDate(txtDataNasc.getText());
         usuario.setDataNasc(data);
 
@@ -391,6 +450,7 @@ public class FrAltUsu extends javax.swing.JDialog {
     private javax.swing.JPanel PnAltUsu;
     private javax.swing.JButton btnAlterarSenha;
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnEscolherFoto;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JCheckBox cbAtivo;
     private javax.swing.JLabel jLabel1;
@@ -398,6 +458,7 @@ public class FrAltUsu extends javax.swing.JDialog {
     private javax.swing.JLabel lblConfSenha;
     private javax.swing.JLabel lblDataNasc;
     private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblFoto;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblSenha;
     private javax.swing.JLabel lblTitulo;

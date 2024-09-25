@@ -92,32 +92,42 @@ public class FrCadUsuario extends javax.swing.JDialog {
 
         lblSenha.setForeground(new java.awt.Color(0, 0, 0));
         lblSenha.setText("Senha:");
-        jPanel1.add(lblSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
-        jPanel1.add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 370, -1));
+        jPanel1.add(lblSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, -1, -1));
+        jPanel1.add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 370, -1));
 
         lblConfSenha.setForeground(new java.awt.Color(0, 0, 0));
         lblConfSenha.setText("Confirmar senha:");
-        jPanel1.add(lblConfSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, -1, -1));
-        jPanel1.add(txtConfSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 370, -1));
+        jPanel1.add(lblConfSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, -1, -1));
+        jPanel1.add(txtConfSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 370, -1));
 
         lblDataNasc.setForeground(new java.awt.Color(0, 0, 0));
         lblDataNasc.setText("Data de nascimento:");
-        jPanel1.add(lblDataNasc, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, -1, -1));
+        jPanel1.add(lblDataNasc, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, -1, -1));
 
         txtDataNasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM))));
-        jPanel1.add(txtDataNasc, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, 140, -1));
+        jPanel1.add(txtDataNasc, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, 140, -1));
 
         cbAtivo.setBackground(new java.awt.Color(0, 185, 110));
         cbAtivo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         cbAtivo.setForeground(new java.awt.Color(0, 0, 0));
         cbAtivo.setText("Ativo");
         cbAtivo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(cbAtivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 460, -1, -1));
+        jPanel1.add(cbAtivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 470, -1, -1));
 
         btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close16.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
         btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCancelarMouseClicked(evt);
+            }
+        });
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 510, -1, -1));
 
         btnSalvar.setForeground(new java.awt.Color(0, 0, 0));
@@ -135,6 +145,8 @@ public class FrCadUsuario extends javax.swing.JDialog {
             }
         });
         jPanel1.add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 510, -1, -1));
+
+        lblFoto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.add(lblFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 140, 140));
 
         btnEscolherFoto.setText("Selecionar imagem");
@@ -154,7 +166,7 @@ public class FrCadUsuario extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,7 +218,7 @@ public class FrCadUsuario extends javax.swing.JDialog {
             File arquivo = exploradorArquivos.getSelectedFile();
 
             //Converte para um ícone
-            Icon icone = Utils.ConverterFileParaIcon(arquivo);
+            Icon icone = Utils.converterFileParaIcon(arquivo);
 
             //Redimensiona para o tamanho que irá aparecer na tela
             ImageIcon iconeRedimensionado = Utils.redimensionarIcon(icone, 140, 140);
@@ -215,6 +227,15 @@ public class FrCadUsuario extends javax.swing.JDialog {
             lblFoto.setIcon(iconeRedimensionado);
         }
     }//GEN-LAST:event_btnEscolherFotoMouseClicked
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+
+
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarMouseClicked
 
     public boolean verificarCampos() {
         if (txtNome.equals("")) {
@@ -275,6 +296,8 @@ public class FrCadUsuario extends javax.swing.JDialog {
         usu.setDataNasc(data);
 
         usu.setAtivo(cbAtivo.isSelected());
+
+        usu.setImagem(lblFoto.getIcon());
 
         UsuarioController controller = new UsuarioController();
 
