@@ -62,6 +62,11 @@ public class FrConUsuario extends javax.swing.JDialog {
                 btnPesquisarMouseClicked(evt);
             }
         });
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, -1, 29));
 
         grdUsuario.setModel(new javax.swing.table.DefaultTableModel(
@@ -191,6 +196,10 @@ public class FrConUsuario extends javax.swing.JDialog {
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAlterarActionPerformed
+
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void pesquisar() {
 

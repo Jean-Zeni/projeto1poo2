@@ -23,7 +23,7 @@ import utils.Utils;
  * @author s.lucas
  */
 public class FrAltUsu extends javax.swing.JDialog {
-
+    
     private Usuario usuario;
 
     /**
@@ -34,7 +34,7 @@ public class FrAltUsu extends javax.swing.JDialog {
         initComponents();
         this.setLocationRelativeTo(null);
     }
-
+    
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
@@ -229,21 +229,21 @@ public class FrAltUsu extends javax.swing.JDialog {
     private void txtCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCodeActionPerformed
-
+    
 
     private void btnAlterarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarSenhaActionPerformed
 
     }//GEN-LAST:event_btnAlterarSenhaActionPerformed
 
     private void btnAlterarSenhaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlterarSenhaMouseClicked
-
+        
         if (txtSenha.isEditable() == false) {
             txtSenha.setEditable(true);
             txtConfSenha.setEditable(true);
             txtSenha.setBackground(Color.white);
             txtConfSenha.setBackground(Color.white);
             btnAlterarSenha.setText("Cancelar alteração");
-
+            
             txtSenha.setText("");
             txtConfSenha.setText("");
         } else {
@@ -252,7 +252,7 @@ public class FrAltUsu extends javax.swing.JDialog {
             txtSenha.setBackground(Color.lightGray);
             txtConfSenha.setBackground(Color.lightGray);
             btnAlterarSenha.setText("Alterar senha");
-
+            
             txtSenha.setText("");
             txtConfSenha.setText("");
         }
@@ -261,9 +261,9 @@ public class FrAltUsu extends javax.swing.JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         carregarUsuario();
-
+        
         URL caminhoImagem = getClass().getResource("/images/401278_gnu_icon.png");
-
+        
         ImageIcon icon = new ImageIcon(caminhoImagem);
 
         //DEFINE A IMAGEM
@@ -292,7 +292,7 @@ public class FrAltUsu extends javax.swing.JDialog {
         APPROVE_OPTION (selecionou)
         CANCEL_OPTION (usuário cancelou)*/
         int resultado = exploradorArquivos.showOpenDialog(null);
-
+        
         if (resultado == JFileChooser.APPROVE_OPTION) {
             //PEGA O ARQUIVO SELECIONADO
             File arquivo = exploradorArquivos.getSelectedFile();
@@ -311,14 +311,14 @@ public class FrAltUsu extends javax.swing.JDialog {
     private void btnEscolherFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEscolherFotoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEscolherFotoActionPerformed
-
+    
     public void carregarUsuario() {
         //Vamos buscar no banco de dados o restante dos campos do usuario,
         //atualmente só tem o pk
 
         UsuarioController controller = new UsuarioController();
         usuario = controller.buscarPorPk(usuario.getPkUsuario());
-
+        
         String codigo = String.valueOf(usuario.getPkUsuario());
         txtCode.setText(codigo);
         txtNome.setText(usuario.getNome());
@@ -326,76 +326,78 @@ public class FrAltUsu extends javax.swing.JDialog {
         txtDataNasc.setText(Utils.converterDateToString(usuario.getDataNasc()));
         cbAtivo.setSelected(usuario.isAtivo());
         lblFoto.setIcon(usuario.getImagem());
-
+        
     }
-
+    
     public boolean verificarCampos() {
         if (txtNome.equals("")) {
             JOptionPane.showMessageDialog(null, "O campo 'Nome' está vazio!");
             return false;
         }
-
+        
         if (!txtNome.getText().matches("^[\\p{L} ]+$")) {
             JOptionPane.showMessageDialog(null, "O campo 'Nome' possui caracteres inválidos!");
             return false;
         }
-
+        
         if (txtEmail.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "O campo'Email' está vazio!");
             return false;
         }
-
+        
         if (!txtEmail.getText().matches(
                 "^[a-z0-9._-]+@[a-z._]+.[a-z._]+$")) {
             JOptionPane.showMessageDialog(null, "O campo 'Email' possui caracteres inválidos!");
         }
-
+        
         if (!txtDataNasc.getText().matches(
                 "^[0-9]{2}/[0-9]{2}/[0-9]{4}$")) {
             JOptionPane.showMessageDialog(null, "O campo 'Data de nascimento' possui formatação incorreta"
                     + " Ex.: 01/01/1990");
             return false;
         }
-
+        
         if (txtSenha.isEditable()) {
             String senha = new String(txtSenha.getPassword());
             String confSenha = new String(txtConfSenha.getPassword());
-
+            
             if (senha.length() < 8) {
                 JOptionPane.showMessageDialog(null, "O campo 'Senha' está vazio ou contém menos de 8 caracteres!");
                 return false;
             }
-
+            
             if (!senha.equals(confSenha)) {
                 JOptionPane.showMessageDialog(null, "A confirmação e a senha necessitam ser iguais!");
                 return false;
             }
         }
-
+        
         return true;
     }
-
+    
     public void gravar() {
         //vai atualizar os dados do atributo usuario
         //Usuario usu = new Usuario();
 
         usuario.setNome(txtNome.getText());
         usuario.setEmail(txtEmail.getText());
-
+        
         if (txtSenha.isEditable()) {
-
+            
             String senha = new String(txtSenha.getPassword());
             String senhaHash = Utils.calcularHash(senha);
             usuario.setSenha(senhaHash);
         }
-
+        
         Date data = Utils.converterStringToDate(txtDataNasc.getText());
         usuario.setDataNasc(data);
-
+        
         usuario.setAtivo(cbAtivo.isSelected());
-
+        
+        usuario.setImagem(lblFoto.getIcon());
+        
         UsuarioController controller = new UsuarioController();
-
+        
         if (controller.alterarUsuario(usuario)) {
             JOptionPane.showMessageDialog(null, "Usuário: " + usuario.getNome() + " alterado com sucesso!");
             this.dispose();
