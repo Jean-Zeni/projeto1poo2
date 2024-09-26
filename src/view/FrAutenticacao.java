@@ -42,6 +42,8 @@ public class FrAutenticacao extends javax.swing.JFrame {
         txtSenha = new javax.swing.JPasswordField();
         lblSenha = new javax.swing.JLabel();
         btnEntrar = new javax.swing.JButton();
+        lblTitle2 = new javax.swing.JLabel();
+        lblTitle1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -50,21 +52,24 @@ public class FrAutenticacao extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(0, 185, 110));
+        jPanel1.setBackground(new java.awt.Color(244, 255, 212));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbImagem.setBackground(new java.awt.Color(204, 255, 204));
         lbImagem.setForeground(new java.awt.Color(255, 255, 255));
-        lbImagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/1564535_customer_user_userphoto_account_person_icon.png"))); // NOI18N
+        lbImagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/poke64px.png"))); // NOI18N
+        jPanel1.add(lbImagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, -1, -1));
 
         txtLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtLoginActionPerformed(evt);
             }
         });
+        jPanel1.add(txtLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 149, 346, -1));
 
-        lblLogin.setFont(new java.awt.Font("Eras Demi ITC", 1, 12)); // NOI18N
-        lblLogin.setForeground(new java.awt.Color(255, 255, 255));
+        lblLogin.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
         lblLogin.setText("Login:");
+        jPanel1.add(lblLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 129, -1, -1));
 
         txtSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,12 +81,13 @@ public class FrAutenticacao extends javax.swing.JFrame {
                 txtSenhaKeyPressed(evt);
             }
         });
+        jPanel1.add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 213, 346, -1));
 
-        lblSenha.setFont(new java.awt.Font("Eras Demi ITC", 1, 12)); // NOI18N
-        lblSenha.setForeground(new java.awt.Color(255, 255, 255));
+        lblSenha.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
         lblSenha.setText("Senha:");
+        jPanel1.add(lblSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 193, -1, -1));
 
-        btnEntrar.setFont(new java.awt.Font("Eras Demi ITC", 1, 12)); // NOI18N
+        btnEntrar.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
         btnEntrar.setText("Entrar");
         btnEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -93,46 +99,23 @@ public class FrAutenticacao extends javax.swing.JFrame {
                 btnEntrarActionPerformed(evt);
             }
         });
+        jPanel1.add(btnEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 296, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblSenha)
-                    .addComponent(btnEntrar)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtLogin)
-                        .addComponent(lbImagem)
-                        .addComponent(txtSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
-                        .addComponent(lblLogin)))
-                .addContainerGap(73, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(lbImagem)
-                .addGap(26, 26, 26)
-                .addComponent(lblLogin)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
-                .addComponent(lblSenha)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addComponent(btnEntrar)
-                .addGap(28, 28, 28))
-        );
+        lblTitle2.setFont(new java.awt.Font("Monospaced", 1, 36)); // NOI18N
+        lblTitle2.setForeground(new java.awt.Color(240, 0, 16));
+        lblTitle2.setText("GameStore");
+        jPanel1.add(lblTitle2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, -1, 30));
+
+        lblTitle1.setFont(new java.awt.Font("Monospaced", 1, 36)); // NOI18N
+        lblTitle1.setForeground(new java.awt.Color(240, 0, 16));
+        lblTitle1.setText("RS");
+        jPanel1.add(lblTitle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 50, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,7 +144,7 @@ public class FrAutenticacao extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSenhaKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        URL caminhoImagem = getClass().getResource("/images/401278_gnu_icon.png");
+        URL caminhoImagem = getClass().getResource("/images/poke32px.png");
 
         ImageIcon icon = new ImageIcon(caminhoImagem);
 
@@ -244,6 +227,8 @@ public class FrAutenticacao extends javax.swing.JFrame {
     private javax.swing.JLabel lbImagem;
     private javax.swing.JLabel lblLogin;
     private javax.swing.JLabel lblSenha;
+    private javax.swing.JLabel lblTitle1;
+    private javax.swing.JLabel lblTitle2;
     private javax.swing.JTextField txtLogin;
     private javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables

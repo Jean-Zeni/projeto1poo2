@@ -262,7 +262,7 @@ public class FrAltUsu extends javax.swing.JDialog {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         carregarUsuario();
         
-        URL caminhoImagem = getClass().getResource("/images/401278_gnu_icon.png");
+        URL caminhoImagem = getClass().getResource("/images/poke32px.png");
         
         ImageIcon icon = new ImageIcon(caminhoImagem);
 

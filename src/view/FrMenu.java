@@ -51,10 +51,10 @@ public class FrMenu extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(0, 185, 110));
+        jPanel1.setBackground(new java.awt.Color(244, 255, 212));
 
         lbImagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbImagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/4691330_gnu_icon.png"))); // NOI18N
+        lbImagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/poke128px.png"))); // NOI18N
         lbImagem.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -149,7 +149,7 @@ public class FrMenu extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
-        URL caminhoImagem = getClass().getResource("/images/401278_gnu_icon.png");
+        URL caminhoImagem = getClass().getResource("/images/poke32px.png");
 
         ImageIcon icon = new ImageIcon(caminhoImagem);
 

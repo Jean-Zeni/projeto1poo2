@@ -102,7 +102,7 @@
     <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="6e" green="b9" red="0" type="rgb"/>
+          <Color blue="d4" green="ff" red="f4" type="rgb"/>
         </Property>
       </Properties>
 
@@ -131,7 +131,7 @@
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/4691330_gnu_icon.png"/>
+              <Image iconType="3" name="/images/poke128px.png"/>
             </Property>
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>

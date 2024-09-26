@@ -39,101 +39,79 @@ public class FrSobre extends javax.swing.JDialog {
         lblVersao = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         lblDesenvolvedor = new javax.swing.JLabel();
+        lblGitHub2 = new javax.swing.JLabel();
         lblGitHub = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel2.setBackground(new java.awt.Color(0, 185, 110));
-        jPanel2.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel2.setBackground(new java.awt.Color(244, 255, 212));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTexto.setFont(new java.awt.Font("Gill Sans MT", 1, 24)); // NOI18N
-        lblTexto.setForeground(new java.awt.Color(0, 0, 0));
         lblTexto.setText("SOBRE");
+        jPanel2.add(lblTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 11, -1, -1));
 
         iconePrincipal.setForeground(new java.awt.Color(102, 0, 51));
-        iconePrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/4691330_gnu_icon.png"))); // NOI18N
+        iconePrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/poke128px.png"))); // NOI18N
+        jPanel2.add(iconePrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 58, -1, -1));
 
         lblVersao.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        lblVersao.setForeground(new java.awt.Color(0, 0, 0));
         lblVersao.setText("Versão 1.0");
+        jPanel2.add(lblVersao, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 192, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("23/09/2024");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(153, 217, -1, -1));
 
-        lblDesenvolvedor.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
-        lblDesenvolvedor.setForeground(new java.awt.Color(0, 0, 0));
-        lblDesenvolvedor.setText("Desenvolvido por: Jean Pereira Zeni");
+        lblDesenvolvedor.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        lblDesenvolvedor.setText("Desenvolvido por: Jean Pereira Zeni e Henrique Fantinel");
+        jPanel2.add(lblDesenvolvedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 251, -1, 28));
 
-        lblGitHub.setForeground(new java.awt.Color(0, 0, 0));
+        lblGitHub2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/github32px.png"))); // NOI18N
+        lblGitHub2.setText("GitHub: Henrique");
+        lblGitHub2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblGitHub2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblGitHub2MouseClicked(evt);
+            }
+        });
+        jPanel2.add(lblGitHub2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, -1, 30));
+
         lblGitHub.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/github32px.png"))); // NOI18N
-        lblGitHub.setText("GitHub");
+        lblGitHub.setText("GitHub: Jean");
         lblGitHub.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblGitHub.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblGitHubMouseClicked(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(148, 148, 148)
-                        .addComponent(lblTexto))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                    .addGap(41, 41, 41)
-                                    .addComponent(lblDesenvolvedor)
-                                    .addGap(34, 34, 34))
-                                .addComponent(iconePrincipal))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(92, 92, 92)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblVersao)
-                                    .addComponent(jLabel1)))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(156, 156, 156)
-                        .addComponent(lblGitHub)))
-                .addContainerGap(71, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblTexto)
-                .addGap(18, 18, 18)
-                .addComponent(iconePrincipal)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblVersao)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addGap(15, 15, 15)
-                .addComponent(lblDesenvolvedor)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblGitHub)
-                .addContainerGap(24, Short.MAX_VALUE))
-        );
+        jPanel2.add(lblGitHub, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, -1, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void lblGitHub2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGitHub2MouseClicked
+        try {
+            Desktop desktop = Desktop.getDesktop();
+            URI uri = new URI("https://github.com/hfantinel");
+            desktop.browse(uri);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_lblGitHub2MouseClicked
 
     private void lblGitHubMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGitHubMouseClicked
         try {
@@ -193,6 +171,7 @@ public class FrSobre extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblDesenvolvedor;
     private javax.swing.JLabel lblGitHub;
+    private javax.swing.JLabel lblGitHub2;
     private javax.swing.JLabel lblTexto;
     private javax.swing.JLabel lblVersao;
     // End of variables declaration//GEN-END:variables
