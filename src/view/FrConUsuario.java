@@ -48,13 +48,14 @@ public class FrConUsuario extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(0, 185, 110));
+        jPanel1.setBackground(new java.awt.Color(244, 255, 212));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTitulo.setFont(new java.awt.Font("Eras Bold ITC", 1, 18)); // NOI18N
         lblTitulo.setText("Consultar Usuários");
         jPanel1.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, -1, -1));
 
+        btnPesquisar.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
         btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lupa32.png"))); // NOI18N
         btnPesquisar.setText("Pesquisar");
         btnPesquisar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -69,6 +70,7 @@ public class FrConUsuario extends javax.swing.JDialog {
         });
         jPanel1.add(btnPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, -1, 29));
 
+        grdUsuario.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
         grdUsuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -99,6 +101,7 @@ public class FrConUsuario extends javax.swing.JDialog {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 570, 87));
 
+        cbFiltro.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
         cbFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome iniciando", "Nome contendo", "Email  iniciando", "Email contendo" }));
         cbFiltro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,6 +111,7 @@ public class FrConUsuario extends javax.swing.JDialog {
         jPanel1.add(cbFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, 20));
         jPanel1.add(txtFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 360, -1));
 
+        btnAlterar.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
         btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/caneta24px.png"))); // NOI18N
         btnAlterar.setText("Alterar");
         btnAlterar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -122,6 +126,7 @@ public class FrConUsuario extends javax.swing.JDialog {
         });
         jPanel1.add(btnAlterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 280, -1, 30));
 
+        btnExcluir.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
         btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lixo24px.png"))); // NOI18N
         btnExcluir.setText("Excluir");
         btnExcluir.addMouseListener(new java.awt.event.MouseAdapter() {

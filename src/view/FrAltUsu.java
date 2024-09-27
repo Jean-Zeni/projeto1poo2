@@ -77,10 +77,11 @@ public class FrAltUsu extends javax.swing.JDialog {
             }
         });
 
-        PnAltUsu.setBackground(new java.awt.Color(0, 185, 110));
+        PnAltUsu.setBackground(new java.awt.Color(244, 255, 212));
         PnAltUsu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblNome.setForeground(new java.awt.Color(0, 0, 0));
+        lblNome.setBackground(new java.awt.Color(244, 255, 212));
+        lblNome.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
         lblNome.setText("Nome:");
         PnAltUsu.add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
 
@@ -91,7 +92,8 @@ public class FrAltUsu extends javax.swing.JDialog {
         });
         PnAltUsu.add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 420, -1));
 
-        lblEmail.setForeground(new java.awt.Color(0, 0, 0));
+        lblEmail.setBackground(new java.awt.Color(244, 255, 212));
+        lblEmail.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
         lblEmail.setText("Email:");
         PnAltUsu.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, -1, -1));
         PnAltUsu.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 420, -1));
@@ -100,11 +102,13 @@ public class FrAltUsu extends javax.swing.JDialog {
         txtSenha.setBackground(new java.awt.Color(204, 204, 204));
         PnAltUsu.add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 420, -1));
 
-        lblSenha.setForeground(new java.awt.Color(0, 0, 0));
+        lblSenha.setBackground(new java.awt.Color(244, 255, 212));
+        lblSenha.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
         lblSenha.setText("Senha:");
         PnAltUsu.add(lblSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, -1, 20));
 
-        lblConfSenha.setForeground(new java.awt.Color(0, 0, 0));
+        lblConfSenha.setBackground(new java.awt.Color(244, 255, 212));
+        lblConfSenha.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
         lblConfSenha.setText("Confirmar senha:");
         PnAltUsu.add(lblConfSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, -1, -1));
 
@@ -112,27 +116,27 @@ public class FrAltUsu extends javax.swing.JDialog {
         txtConfSenha.setBackground(new java.awt.Color(204, 204, 204));
         PnAltUsu.add(txtConfSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 420, -1));
 
-        lblDataNasc.setForeground(new java.awt.Color(0, 0, 0));
+        lblDataNasc.setBackground(new java.awt.Color(244, 255, 212));
+        lblDataNasc.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
         lblDataNasc.setText("Data de nascimento:");
         PnAltUsu.add(lblDataNasc, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
 
         txtDataNasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM))));
         PnAltUsu.add(txtDataNasc, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 140, -1));
 
-        cbAtivo.setBackground(new java.awt.Color(0, 185, 110));
-        cbAtivo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        cbAtivo.setForeground(new java.awt.Color(0, 0, 0));
+        cbAtivo.setBackground(new java.awt.Color(244, 255, 212));
+        cbAtivo.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         cbAtivo.setText("Ativo");
         cbAtivo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         PnAltUsu.add(cbAtivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 300, -1, -1));
 
-        btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
+        btnCancelar.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close16.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
         btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         PnAltUsu.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 490, -1, 30));
 
-        btnSalvar.setForeground(new java.awt.Color(0, 0, 0));
+        btnSalvar.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
         btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save24px.png"))); // NOI18N
         btnSalvar.setText("Salvar");
         btnSalvar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -152,8 +156,8 @@ public class FrAltUsu extends javax.swing.JDialog {
         lblTitulo.setText("Alterar Usuários");
         PnAltUsu.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, -1, -1));
 
-        btnAlterarSenha.setBackground(new java.awt.Color(0, 185, 110));
-        btnAlterarSenha.setForeground(new java.awt.Color(0, 0, 0));
+        btnAlterarSenha.setBackground(new java.awt.Color(244, 255, 212));
+        btnAlterarSenha.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
         btnAlterarSenha.setText("Alterar senha");
         btnAlterarSenha.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnAlterarSenha.setBorderPainted(false);
@@ -170,7 +174,8 @@ public class FrAltUsu extends javax.swing.JDialog {
         });
         PnAltUsu.add(btnAlterarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 450, -1, -1));
 
-        lbCodeTitle.setForeground(new java.awt.Color(0, 0, 0));
+        lbCodeTitle.setBackground(new java.awt.Color(244, 255, 212));
+        lbCodeTitle.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
         lbCodeTitle.setText("Código:");
         PnAltUsu.add(lbCodeTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, 20));
 
@@ -189,6 +194,7 @@ public class FrAltUsu extends javax.swing.JDialog {
         lblFoto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         PnAltUsu.add(lblFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, 140, 140));
 
+        btnEscolherFoto.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
         btnEscolherFoto.setText("Selecionar imagem");
         btnEscolherFoto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
