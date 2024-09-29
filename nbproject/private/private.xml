@@ -3,10 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/aluno.saolucas/Documents/NetBeansProjects/projeto1poo2/src/utils/Utils.java</file>
-            <file>file:/C:/Users/aluno.saolucas/Documents/NetBeansProjects/projeto1poo2/src/view/FrSobre.java</file>
-            <file>file:/C:/Users/aluno.saolucas/Documents/NetBeansProjects/projeto1poo2/src/view/FrMenu.java</file>
-            <file>file:/C:/Users/aluno.saolucas/Documents/NetBeansProjects/projeto1poo2/src/view/FrCadUsuario.java</file>
+            <file>file:/C:/Users/Lenovo/Desktop/projetoPoo2/projeto1poo2/src/view/FrConUsuario.java</file>
+            <file>file:/C:/Users/Lenovo/Desktop/projetoPoo2/projeto1poo2/src/controller/ProdutoController.java</file>
+            <file>file:/C:/Users/Lenovo/Desktop/projetoPoo2/projeto1poo2/src/controller/UsuarioController.java</file>
+            <file>file:/C:/Users/Lenovo/Desktop/projetoPoo2/projeto1poo2/src/view/FrAltProduto.java</file>
+            <file>file:/C:/Users/Lenovo/Desktop/projetoPoo2/projeto1poo2/src/view/FrAltUsu.java</file>
+            <file>file:/C:/Users/Lenovo/Desktop/projetoPoo2/projeto1poo2/src/model/Usuario.java</file>
+            <file>file:/C:/Users/Lenovo/Desktop/projetoPoo2/projeto1poo2/src/model/Produtos.java</file>
+            <file>file:/C:/Users/Lenovo/Desktop/projetoPoo2/projeto1poo2/src/view/FrBuscarProdutos.java</file>
         </group>
     </open-files>
 </project-private>

@@ -153,6 +153,7 @@ public class FrAltUsu extends javax.swing.JDialog {
         PnAltUsu.add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 490, -1, 30));
 
         lblTitulo.setFont(new java.awt.Font("Eras Bold ITC", 1, 18)); // NOI18N
+        lblTitulo.setForeground(java.awt.Color.red);
         lblTitulo.setText("Alterar Usuários");
         PnAltUsu.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, -1, -1));
 

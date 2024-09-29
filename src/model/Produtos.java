@@ -13,6 +13,7 @@ import javax.swing.Icon;
  */
 public class Produtos {
     
+    private int pkProduto;
     private String nomeProduto;
     private double valorProduto;
     private double quantia;
@@ -21,11 +22,20 @@ public class Produtos {
     public Produtos() {
     }
 
-    public Produtos(String nomeProduto, double valorProduto, double quantia, Icon imgProduto) {
+    public Produtos(int pkProduto, String nomeProduto, double valorProduto, double quantia, Icon imgProduto) {
+        this.pkProduto = pkProduto;
         this.nomeProduto = nomeProduto;
         this.valorProduto = valorProduto;
         this.quantia = quantia;
         this.imgProduto = imgProduto;
+    }
+
+    public int getPkProduto() {
+        return pkProduto;
+    }
+
+    public void setPkProduto(int pkProduto) {
+        this.pkProduto = pkProduto;
     }
 
     public String getNomeProduto() {
@@ -59,9 +69,6 @@ public class Produtos {
     public void setImgProduto(Icon imgProduto) {
         this.imgProduto = imgProduto;
     }
-    
-    
-    
     
     
 }

@@ -5,26 +5,26 @@
  */
 package view;
 
+import controller.ProdutoController;
 import controller.UsuarioController;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import model.Usuario;
+import model.Produtos;
 import utils.Utils;
 
 /**
  *
- * @author s.lucas
+ * @author Lenovo
  */
-public class FrConUsuario extends javax.swing.JDialog {
+public class FrBuscarProdutos extends javax.swing.JDialog {
 
     /**
-     * Creates new form FrConUsuario
+     * Creates new form FrBuscarProdutos
      */
-    public FrConUsuario(java.awt.Frame parent, boolean modal) {
+    public FrBuscarProdutos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -37,24 +37,55 @@ public class FrConUsuario extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        lblTitulo = new javax.swing.JLabel();
-        btnPesquisar = new javax.swing.JButton();
+        lblTitle = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        grdUsuario = new javax.swing.JTable();
+        tbConProd = new javax.swing.JTable();
+        btnPesquisar = new javax.swing.JButton();
         cbFiltro = new javax.swing.JComboBox<>();
         txtFiltro = new javax.swing.JTextField();
-        btnAlterar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
+        btnAlterar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(244, 255, 212));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblTitulo.setFont(new java.awt.Font("Eras Bold ITC", 1, 18)); // NOI18N
-        lblTitulo.setForeground(java.awt.Color.red);
-        lblTitulo.setText("Consultar Usuários");
-        jPanel1.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, -1, -1));
+        lblTitle.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblTitle.setForeground(java.awt.Color.red);
+        lblTitle.setText("Consultar Produtos");
+        jPanel1.add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, -1, -1));
+
+        tbConProd.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Código", "Nome", "Valor", "Quantidade"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tbConProd);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, 110));
 
         btnPesquisar.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
         btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lupa32.png"))); // NOI18N
@@ -69,48 +100,27 @@ public class FrConUsuario extends javax.swing.JDialog {
                 btnPesquisarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, -1, 29));
-
-        grdUsuario.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
-        grdUsuario.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Código", "Nome", "E-mail", "Data de Nascimento", "Ativo"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(grdUsuario);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 570, 87));
+        jPanel1.add(btnPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 130, -1, 29));
 
         cbFiltro.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
-        cbFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome iniciando", "Nome contendo", "Email  iniciando", "Email contendo" }));
+        cbFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome iniciando", "Nome contendo", "Busca por código" }));
         cbFiltro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbFiltroActionPerformed(evt);
             }
         });
-        jPanel1.add(cbFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, 20));
-        jPanel1.add(txtFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 360, -1));
+        jPanel1.add(cbFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, 20));
+        jPanel1.add(txtFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 360, -1));
+
+        btnExcluir.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
+        btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lixo24px.png"))); // NOI18N
+        btnExcluir.setText("Excluir");
+        btnExcluir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnExcluirMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, -1, 30));
 
         btnAlterar.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
         btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/caneta24px.png"))); // NOI18N
@@ -125,27 +135,17 @@ public class FrConUsuario extends javax.swing.JDialog {
                 btnAlterarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAlterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 280, -1, 30));
-
-        btnExcluir.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
-        btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lixo24px.png"))); // NOI18N
-        btnExcluir.setText("Excluir");
-        btnExcluir.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnExcluirMouseClicked(evt);
-            }
-        });
-        jPanel1.add(btnExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, -1, 30));
+        jPanel1.add(btnAlterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 340, -1, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 526, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
         );
 
         pack();
@@ -155,21 +155,25 @@ public class FrConUsuario extends javax.swing.JDialog {
         pesquisar();
     }//GEN-LAST:event_btnPesquisarMouseClicked
 
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPesquisarActionPerformed
+
     private void cbFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbFiltroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbFiltroActionPerformed
 
     private void btnExcluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirMouseClicked
 
-        if (grdUsuario.getSelectedRow() != -1) {
-            int posicaoSelecionada = grdUsuario.getSelectedRow();
-            String textoCelula = grdUsuario.getValueAt(posicaoSelecionada, 0).toString();
+        if (tbConProd.getSelectedRow() != -1) {
+            int posicaoSelecionada = tbConProd.getSelectedRow();
+            String textoCelula = tbConProd.getValueAt(posicaoSelecionada, 0).toString();
 
-            int pkUsuario = Integer.parseInt(textoCelula);
+            int pkProduto = Integer.parseInt(textoCelula);
 
-            UsuarioController controller = new UsuarioController();
+            ProdutoController controller = new ProdutoController();
 
-            if (controller.excluir(pkUsuario) == true) {
+            if (controller.excluir(pkProduto) == true) {
                 JOptionPane.showMessageDialog(null, "Usuário excluído com sucesso!");
                 pesquisar();
             }
@@ -178,24 +182,23 @@ public class FrConUsuario extends javax.swing.JDialog {
 
     private void btnAlterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlterarMouseClicked
 
-        if (grdUsuario.getSelectedRow() != -1) {
-            int posicaoSelecionada = grdUsuario.getSelectedRow();
-            String textoCelula = grdUsuario.getValueAt(posicaoSelecionada, 0).toString();
+        if (tbConProd.getSelectedRow() != -1) {
+            int posicaoSelecionada = tbConProd.getSelectedRow();
+            String textoCelula = tbConProd.getValueAt(posicaoSelecionada, 0).toString();
 
-            int pkUsuario = Integer.parseInt(textoCelula);
+            int pkProduto = Integer.parseInt(textoCelula);
 
-            Usuario usu = new Usuario();
-            usu.setPkUsuario(pkUsuario);
+            Produtos prod = new Produtos();
+            prod.setPkProduto(pkProduto);
 
             FrAltUsu telaAlt = new FrAltUsu(null, rootPaneCheckingEnabled);
 
-            telaAlt.setUsuario(usu);
+            telaAlt.setPro(prod); //NECESSITA TELA DE ALTERAÇÃO
 
             telaAlt.setVisible(true);
             pesquisar();
 
         }
-
 
     }//GEN-LAST:event_btnAlterarMouseClicked
 
@@ -203,36 +206,32 @@ public class FrConUsuario extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAlterarActionPerformed
 
-    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPesquisarActionPerformed
-
     private void pesquisar() {
 
-        DefaultTableModel modelo = (DefaultTableModel) grdUsuario.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) tbConProd.getModel();
 
         modelo.setNumRows(0);
 
-        UsuarioController controller = new UsuarioController();
+        ProdutoController controller = new ProdutoController();
 
         int tipoFiltro = cbFiltro.getSelectedIndex();
         String filtro = txtFiltro.getText();
 
-        List<Usuario> listaUsuarios = controller.buscarUsuarios(tipoFiltro, filtro);
+        List<Produtos> listaProdutos = controller.buscarProdutos(tipoFiltro, filtro);
 
-        for (Usuario usu : listaUsuarios) {
+        for (Produtos prod : listaProdutos) {
             Object[] linha = {
-                usu.getPkUsuario(),
-                usu.getNome(),
-                usu.getEmail(),
-                Utils.converterDateToString(usu.getDataNasc()),
-                usu.ativoToString()
+                prod.getPkProduto(),
+                prod.getNomeProduto(),
+                prod.getValorProduto(),
+                prod.getQuantia()
             };
 
             modelo.addRow(linha);
         }
     }
-
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -250,20 +249,20 @@ public class FrConUsuario extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrConUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrBuscarProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrConUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrBuscarProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrConUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrBuscarProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrConUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrBuscarProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                FrConUsuario dialog = new FrConUsuario(new javax.swing.JFrame(), true);
+                FrBuscarProdutos dialog = new FrBuscarProdutos(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -280,10 +279,10 @@ public class FrConUsuario extends javax.swing.JDialog {
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JComboBox<String> cbFiltro;
-    private javax.swing.JTable grdUsuario;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JLabel lblTitle;
+    private javax.swing.JTable tbConProd;
     private javax.swing.JTextField txtFiltro;
     // End of variables declaration//GEN-END:variables
 }
