@@ -64,7 +64,7 @@ public class ProdutoController {
     
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
     
-    public boolean alterarProduto(Produtos produto) {
+    public boolean alterarProduto(Produtos prod) {
         String sql = "UPDATE tb_produtos SET nome_produto = ?, valor_produto = ?, quantidade = ?, "
                 + " img_produto = ? WHERE "
                 + " pk_produto = ?";
@@ -73,14 +73,14 @@ public class ProdutoController {
         PreparedStatement comando = null;
 
         try {
-            byte[] iconBytes = Utils.converterIconToBytes(produto.getImgProduto());
+            byte[] iconBytes = Utils.converterIconToBytes(prod.getImgProduto());
 
             comando = gerenciador.prepararComando(sql);
-            comando.setString(1, produto.getNomeProduto());
-            comando.setDouble(2, produto.getValorProduto());
-            comando.setDouble(3, produto.getQuantia());
+            comando.setString(1, prod.getNomeProduto());
+            comando.setDouble(2, prod.getValorProduto());
+            comando.setDouble(3, prod.getQuantia());
             comando.setBytes(4, iconBytes);
-            comando.setInt(5, produto.getPkProduto());
+            comando.setInt(5, prod.getPkProduto());
 
             comando.executeUpdate();
 
@@ -134,10 +134,10 @@ public class ProdutoController {
 
                 Produtos prod = new Produtos();
 
-                prod.setPkProduto(resultado.getInt("pkProduto"));
-                prod.setNomeProduto(resultado.getString("nomeProduto"));
-                prod.setValorProduto(resultado.getDouble("valorProduto"));
-                prod.setQuantia(resultado.getDouble("quantia"));
+                prod.setPkProduto(resultado.getInt("pk_produto"));
+                prod.setNomeProduto(resultado.getString("nome_produto"));
+                prod.setValorProduto(resultado.getDouble("valor_produto"));
+                prod.setQuantia(resultado.getDouble("quantidade"));
 
                 listaProdutos.add(prod);
             }
@@ -200,12 +200,12 @@ public class ProdutoController {
 
             if (resultado.next()) {
 
-                prod.setPkProduto(resultado.getInt("pkProduto"));
-                prod.setNomeProduto(resultado.getString("nomeProduto"));
-                prod.setValorProduto(resultado.getDouble("valorProduto"));
-                prod.setQuantia(resultado.getDouble("quantia"));
+                prod.setPkProduto(resultado.getInt("pk_produto"));
+                prod.setNomeProduto(resultado.getString("nome_produto"));
+                prod.setValorProduto(resultado.getDouble("valor_produto"));
+                prod.setQuantia(resultado.getDouble("quantidade"));
 
-                byte[] bytes = resultado.getBytes("imgProduto");
+                byte[] bytes = resultado.getBytes("img_produto");
                 if (bytes != null) {
                     ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
                     BufferedImage imagem = ImageIO.read(bis);

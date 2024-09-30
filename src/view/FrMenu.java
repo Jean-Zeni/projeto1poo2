@@ -36,10 +36,13 @@ public class FrMenu extends javax.swing.JFrame {
         lbImagem = new javax.swing.JLabel();
         barraMenu = new javax.swing.JMenuBar();
         menuCadastro = new javax.swing.JMenu();
+        imVenda = new javax.swing.JMenuItem();
         imUsuario = new javax.swing.JMenuItem();
-        imNaoSei = new javax.swing.JMenuItem();
+        imProdutos = new javax.swing.JMenuItem();
         imSair = new javax.swing.JMenuItem();
         menuConsulta = new javax.swing.JMenu();
+        imConVendas = new javax.swing.JMenuItem();
+        imConProdutos = new javax.swing.JMenuItem();
         imConUsuario = new javax.swing.JMenuItem();
         menuSobre = new javax.swing.JMenu();
 
@@ -76,6 +79,14 @@ public class FrMenu extends javax.swing.JFrame {
 
         menuCadastro.setText("Cadastro");
 
+        imVenda.setText("Venda");
+        imVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imVendaActionPerformed(evt);
+            }
+        });
+        menuCadastro.add(imVenda);
+
         imUsuario.setText("Usuário");
         imUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -89,8 +100,13 @@ public class FrMenu extends javax.swing.JFrame {
         });
         menuCadastro.add(imUsuario);
 
-        imNaoSei.setText("???");
-        menuCadastro.add(imNaoSei);
+        imProdutos.setText("Produto");
+        imProdutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imProdutosActionPerformed(evt);
+            }
+        });
+        menuCadastro.add(imProdutos);
 
         imSair.setText("Sair");
         imSair.addActionListener(new java.awt.event.ActionListener() {
@@ -103,6 +119,22 @@ public class FrMenu extends javax.swing.JFrame {
         barraMenu.add(menuCadastro);
 
         menuConsulta.setText("Consulta");
+
+        imConVendas.setText("Vendas");
+        imConVendas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imConVendasActionPerformed(evt);
+            }
+        });
+        menuConsulta.add(imConVendas);
+
+        imConProdutos.setText("Produtos");
+        imConProdutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imConProdutosActionPerformed(evt);
+            }
+        });
+        menuConsulta.add(imConProdutos);
 
         imConUsuario.setText("Usuário");
         imConUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -181,6 +213,26 @@ public class FrMenu extends javax.swing.JFrame {
         telaSobre.setVisible(true);
     }//GEN-LAST:event_menuSobreMouseClicked
 
+    private void imVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imVendaActionPerformed
+        FrVendas telaCadastroVendas = new FrVendas(this, rootPaneCheckingEnabled);
+        telaCadastroVendas.setVisible(true);
+    }//GEN-LAST:event_imVendaActionPerformed
+
+    private void imProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imProdutosActionPerformed
+        FrCadastrarProdutos telaCadastroProd = new FrCadastrarProdutos(this, rootPaneCheckingEnabled);
+        telaCadastroProd.setVisible(true);
+    }//GEN-LAST:event_imProdutosActionPerformed
+
+    private void imConVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imConVendasActionPerformed
+        FrConVenda telaConsultaVenda = new FrConVenda(this, rootPaneCheckingEnabled);
+        telaConsultaVenda.setVisible(true);
+    }//GEN-LAST:event_imConVendasActionPerformed
+
+    private void imConProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imConProdutosActionPerformed
+        FrBuscarProdutos telaConsultarProduto = new FrBuscarProdutos(this, rootPaneCheckingEnabled);
+        telaConsultarProduto.setVisible(true);
+    }//GEN-LAST:event_imConProdutosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -218,10 +270,13 @@ public class FrMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar barraMenu;
+    private javax.swing.JMenuItem imConProdutos;
     private javax.swing.JMenuItem imConUsuario;
-    private javax.swing.JMenuItem imNaoSei;
+    private javax.swing.JMenuItem imConVendas;
+    private javax.swing.JMenuItem imProdutos;
     private javax.swing.JMenuItem imSair;
     private javax.swing.JMenuItem imUsuario;
+    private javax.swing.JMenuItem imVenda;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbImagem;
     private javax.swing.JMenu menuCadastro;

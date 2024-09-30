@@ -22,6 +22,8 @@ import utils.Utils;
  */
 public class FrAltProduto extends javax.swing.JDialog {
 
+    private Produtos prod;
+
     /**
      * Creates new form FrAltProduto
      */
@@ -29,13 +31,10 @@ public class FrAltProduto extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
-
     }
 
     public void setProduto(Produtos prod) {
-        if (verificarCampos() == true) {
-            gravar();
-        }
+        this.prod = prod;
     }
 
     /**
@@ -63,7 +62,7 @@ public class FrAltProduto extends javax.swing.JDialog {
         lblImgProduto = new javax.swing.JLabel();
         btnAltImg = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnSalvar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -141,6 +140,11 @@ public class FrAltProduto extends javax.swing.JDialog {
         btnCancelar.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close16.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
+        btnCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCancelarMouseClicked(evt);
+            }
+        });
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
@@ -148,10 +152,15 @@ public class FrAltProduto extends javax.swing.JDialog {
         });
         jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, 130, 40));
 
-        jButton1.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save24px.png"))); // NOI18N
-        jButton1.setText("Salvar alterações");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 370, 190, 40));
+        btnSalvar.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save24px.png"))); // NOI18N
+        btnSalvar.setText("Salvar alterações");
+        btnSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSalvarMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 370, 190, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -176,11 +185,11 @@ public class FrAltProduto extends javax.swing.JDialog {
     }//GEN-LAST:event_btnAumentarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        carregarUsuario();
+        carregarProduto();
 
         URL caminhoImagem = getClass().getResource("/images/poke32px.png");
 
@@ -224,21 +233,39 @@ public class FrAltProduto extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnAltImgMouseClicked
 
-    public void carregarUsuario() {
+    private void btnCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarMouseClicked
+
+    private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
+        if (verificarCampos() == true) {
+            gravar();
+        }
+    }//GEN-LAST:event_btnSalvarMouseClicked
+
+    public void carregarProduto() {
         //Vamos buscar no banco de dados o restante dos campos do usuario,
         //atualmente só tem o pk
 
         ProdutoController controller = new ProdutoController();
-        Produtos prod = new Produtos();
 
         prod = controller.buscarPorPk(prod.getPkProduto());
 
         String codigo = String.valueOf(prod.getPkProduto());
         txtCode.setText(codigo);
+
         txtNomeProduto.setText(prod.getNomeProduto());
-        txtValorProduto.setDouble(prod.getValorProduto());//VALOR PRECISA SER CONVERTIDO
-        txtQuantia.setText(prod.getQuantia());//VALOR PRECISA SER CONVERTIDO
+
+        String valorProd = String.valueOf(prod.getValorProduto());
+        txtValorProduto.setText(valorProd);
+
+        String quantProd = String.valueOf(prod.getQuantia());
+        txtQuantia.setText(quantProd);
+
         lblImgProduto.setIcon(prod.getImgProduto());
+
+        //txtValorProduto.setDouble(prod.getValorProduto());//VALOR PRECISA SER CONVERTIDO
+        //txtQuantia.setText(prod.getQuantia());//VALOR PRECISA SER CONVERTIDO
     }
 
     /////////////////////////////////////////////////////////////////////////////
@@ -250,7 +277,7 @@ public class FrAltProduto extends javax.swing.JDialog {
         }
 
         if (!txtNomeProduto.getText().matches("^[\\p{L}0-9 ]+$")) {
-            JOptionPane.showMessageDialog(null, "O campo 'Nome' possui caracteres inválidos!");
+            JOptionPane.showMessageDialog(null, "O campo 'Nome do produto' possui caracteres inválidos!");
             return false;
         }
 
@@ -274,10 +301,34 @@ public class FrAltProduto extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "O campo 'Quantidade' possui caracteres inválidos!");
             return false;
         }
-
-        if
-
         return true;
+    }
+
+    public void gravar() {
+        //vai atualizar os dados do atributo usuario
+
+        prod.setNomeProduto(txtNomeProduto.getText());
+
+        //String valorProd = String.valueOf(prod.getValorProduto());
+        //txtValorProduto.setText(valorProd);
+        String valorProdStr = txtValorProduto.getText();
+        double valorProd = Double.parseDouble(valorProdStr);
+        prod.setValorProduto(valorProd);
+
+        String quantProdStr = txtQuantia.getText();
+        double quantProd = Double.parseDouble(quantProdStr);
+        prod.setQuantia(quantProd);
+
+        prod.setImgProduto(lblImgProduto.getIcon());
+
+        ProdutoController controller = new ProdutoController();
+
+        if (controller.alterarProduto(prod)) {
+            JOptionPane.showMessageDialog(null, "Produto: " + prod.getNomeProduto() + " alterado com sucesso!");
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Usuário não pode ser alterado!");
+        }
     }
 
     /**
@@ -327,7 +378,7 @@ public class FrAltProduto extends javax.swing.JDialog {
     private javax.swing.JButton btnAumentar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnDiminuir;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnSalvar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblCode;

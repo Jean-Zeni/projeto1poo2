@@ -191,9 +191,9 @@ public class FrBuscarProdutos extends javax.swing.JDialog {
             Produtos prod = new Produtos();
             prod.setPkProduto(pkProduto);
 
-            FrAltUsu telaAlt = new FrAltUsu(null, rootPaneCheckingEnabled);
+            FrAltProduto telaAlt = new FrAltProduto(null, rootPaneCheckingEnabled);
 
-            telaAlt.setPro(prod); //NECESSITA TELA DE ALTERAÇÃO
+            telaAlt.setProduto(prod);
 
             telaAlt.setVisible(true);
             pesquisar();
@@ -230,8 +230,7 @@ public class FrBuscarProdutos extends javax.swing.JDialog {
             modelo.addRow(linha);
         }
     }
-    
-    
+
     /**
      * @param args the command line arguments
      */

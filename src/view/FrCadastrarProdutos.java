@@ -98,11 +98,16 @@ public class FrCadastrarProdutos extends javax.swing.JDialog {
         jPanel1.add(txtQuantia, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 70, -1));
 
         btnGravar.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
-        btnGravar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/caneta24px.png"))); // NOI18N
+        btnGravar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save24px.png"))); // NOI18N
         btnGravar.setText("Gravar");
         btnGravar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnGravarMouseClicked(evt);
+            }
+        });
+        btnGravar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGravarActionPerformed(evt);
             }
         });
         jPanel1.add(btnGravar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 400, -1, 30));
@@ -207,6 +212,10 @@ public class FrCadastrarProdutos extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_btnCancelarMouseClicked
 
+    private void btnGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGravarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGravarActionPerformed
+
     public boolean verificarCampos() {
         if (txtNomeProduto.equals("")) {
             JOptionPane.showMessageDialog(null, "O campo 'Nome' está vazio!");
@@ -242,7 +251,7 @@ public class FrCadastrarProdutos extends javax.swing.JDialog {
     }
 
     public void gravar() {
-        //INSTANCIAR UM OBJETO USUARIO
+        //INSTANCIAR UM OBJETO PRODUTO
         Produtos prod = new Produtos();
 
         prod.setNomeProduto(txtNomeProduto.getText());
