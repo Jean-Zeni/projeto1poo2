@@ -55,7 +55,7 @@ public class VendasController {
     public boolean alterarVenda(Venda venda) {
         String sql = "UPDATE tb_vendas SET data_venda = ?, valor_total = ?, cpf_comprador = ?, "
                 + " nome_comprador = ? WHERE "
-                + " pk_venda = ?";
+                + " pk_venda = ? ";
 
         GerenciadorConexao gerenciador = new GerenciadorConexao();
         PreparedStatement comando = null;
@@ -83,7 +83,7 @@ public class VendasController {
     }
 
     public List<Venda> buscarVendas(int tipoFiltro, String filtro) {
-        String sql = "SELECT * FROM dbprojeto.tb_vendas";
+        String sql = "SELECT * FROM tb_vendas";
 
         if (!filtro.equals("")) {
             if (tipoFiltro == 0 || tipoFiltro == 1) {
@@ -118,11 +118,11 @@ public class VendasController {
 
                 Venda venda = new Venda();
 
-                venda.setPkVenda(resultado.getInt("pkVenda"));
-                venda.setDataVenda(resultado.getDate("dataVenda"));
-                venda.setValorTotal(resultado.getDouble("valorTotal"));
-                venda.setCpfComprador(resultado.getString("cpfComprador"));
-                venda.setNomeComprador(resultado.getString("nomeComprador"));
+                venda.setPkVenda(resultado.getInt("pk_venda"));
+                venda.setDataVenda(resultado.getDate("data_venda"));
+                venda.setValorTotal(resultado.getDouble("valor_total"));
+                venda.setCpfComprador(resultado.getString("cpf_comprador"));
+                venda.setNomeComprador(resultado.getString("nome_comprador"));
 
                 listaVendas.add(venda);
             }
@@ -161,7 +161,7 @@ public class VendasController {
     public Venda buscarPorPk(int pkVenda) {
 
         //Guarda o sql
-        String sql = "SELECT * FROM tb_venda WHERE pk_venda = ? ";
+        String sql = "SELECT * FROM tb_vendas WHERE pk_venda = ? ";
 
         //cria um gerenciador de conexao
         GerenciadorConexao gerenciador = new GerenciadorConexao();

@@ -57,8 +57,6 @@ public class FrAltProduto extends javax.swing.JDialog {
         txtValorProduto = new javax.swing.JTextField();
         lblQuantidade = new javax.swing.JLabel();
         txtQuantia = new javax.swing.JTextField();
-        btnAumentar = new javax.swing.JButton();
-        btnDiminuir = new javax.swing.JButton();
         lblImgProduto = new javax.swing.JLabel();
         btnAltImg = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
@@ -111,19 +109,6 @@ public class FrAltProduto extends javax.swing.JDialog {
             }
         });
         jPanel1.add(txtQuantia, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 50, -1));
-
-        btnAumentar.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
-        btnAumentar.setText("+");
-        btnAumentar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAumentarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnAumentar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, -1, 20));
-
-        btnDiminuir.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
-        btnDiminuir.setText("-");
-        jPanel1.add(btnDiminuir, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, -1, 20));
 
         lblImgProduto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.add(lblImgProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, 140, 140));
@@ -179,10 +164,6 @@ public class FrAltProduto extends javax.swing.JDialog {
     private void txtQuantiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQuantiaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtQuantiaActionPerformed
-
-    private void btnAumentarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAumentarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAumentarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.dispose();
@@ -375,9 +356,7 @@ public class FrAltProduto extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAltImg;
-    private javax.swing.JButton btnAumentar;
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnDiminuir;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

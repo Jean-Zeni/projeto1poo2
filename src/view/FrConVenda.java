@@ -16,6 +16,8 @@ import utils.Utils;
  * @author Lenovo
  */
 public class FrConVenda extends javax.swing.JDialog {
+    
+    Utils utils = new Utils();
 
     /**
      * Creates new form FrConVenda
@@ -68,7 +70,7 @@ public class FrConVenda extends javax.swing.JDialog {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false
@@ -169,13 +171,13 @@ public class FrConVenda extends javax.swing.JDialog {
                 venda.getPkVenda(),
                 venda.getDataVenda(),
                 venda.getValorTotal(),
-                Utils.converterDateToString(venda.getDataVenda()),
                 venda.getCpfComprador(),
                 venda.getNomeComprador()
             };
 
             modelo.addRow(linha);
         }
+        
     }
     
     /**

@@ -66,12 +66,12 @@ public class FrVendas extends javax.swing.JDialog {
         lblDataVenda.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         lblDataVenda.setText("Data da venda:");
         jPanel1.add(lblDataVenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, -1, -1));
-        jPanel1.add(txtDataVenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 70, -1));
+        jPanel1.add(txtDataVenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 70, 30));
 
         lblValorVenda.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         lblValorVenda.setText("Total:");
         jPanel1.add(lblValorVenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
-        jPanel1.add(txtValorTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 60, 20));
+        jPanel1.add(txtValorTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 60, 30));
 
         lblCpfComprador.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         lblCpfComprador.setText("CPF do comprador:");
@@ -189,30 +189,14 @@ public class FrVendas extends javax.swing.JDialog {
         VendasController controller = new VendasController();
 
         if (controller.inserirVenda(venda)) {
-            JOptionPane.showMessageDialog(null, "Venda código: " + venda.getPkVenda() + " inserida com sucesso!");
+            JOptionPane.showMessageDialog(null, "Venda inserida com sucesso!");
             this.dispose();
         } else {
             JOptionPane.showMessageDialog(null, "Venda não pode ser inserida!");
         }
     }
 
-    public void carregarVenda() {
-        //Vamos buscar no banco de dados o restante dos campos do usuario,
-        //atualmente só tem o pk
-
-        Venda venda = new Venda();
-
-        VendasController controller = new VendasController();
-        venda = controller.buscarPorPk(venda.getPkVenda());
-
-        txtDataVenda.setText(Utils.converterDateToString(venda.getDataVenda()));
-        double valorTot = venda.getValorTotal();
-        txtValorTotal.setText(valTot);
-        txtEmail.setText(usuario.getEmail());
-        cbAtivo.setSelected(usuario.isAtivo());
-        lblFoto.setIcon(usuario.getImagem());
-
-    }
+   
 
     /**
      * @param args the command line arguments
